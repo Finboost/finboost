@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">finboost-frontend</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ob_title_1">Financial Growth</string>
+    <string name="ob_desc_1">Boost your financial growth using Ai technology</string>
+    <string name="ob_title_2">Financial Literation</string>
+    <string name="ob_desc_2">Get to know more about financial with article that we provide</string>
+</resources>

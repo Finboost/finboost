@@ -37,6 +37,7 @@ class ThirdScreen : Fragment() {
             .edit()
         sharedPref.putBoolean("Finished", true)
         sharedPref.apply()
+
     }
 
 }

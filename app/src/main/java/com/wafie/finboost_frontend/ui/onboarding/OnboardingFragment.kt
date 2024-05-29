@@ -42,7 +42,6 @@ class OnboardingFragment : Fragment() {
 
         return view
 
-
     }
 
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home"
+        android:title="Home" />
+    <item
+        android:id="@+id/message"
+        android:icon="@drawable/messages"
+        android:title="Message" />
+    <item
+        android:id="@+id/finAi"
+        android:icon="@drawable/ic_add"
+        android:title="FinAi" />
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/profile_circle"
+        android:title="Profile" />
+</menu>

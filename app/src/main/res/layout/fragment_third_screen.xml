@@ -4,22 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.onboarding.screens.ThirdScreen">
 
-    <com.google.android.material.button.MaterialButton
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:text="SKIP"
-        android:textColor="@color/black"
-        android:layout_marginTop="20dp"
-        app:strokeColor="@color/black"
-        app:rippleColor="@color/black"
-        android:backgroundTint="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.907"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -61,16 +48,16 @@
         app:layout_constraintTop_toBottomOf="@+id/title3" />
 
 
-    <ImageButton
-        android:id="@+id/ib_next"
-        android:layout_width="70dp"
-        android:layout_height="30dp"
-        android:src="@drawable/ic_arrow"
+    <Button
+        android:id="@+id/bt_get_started"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:layout_marginEnd="40dp"
+        android:textSize="20sp"
+        android:text="@string/get_started"
+        android:background="@drawable/button_filled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/roundcorner"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

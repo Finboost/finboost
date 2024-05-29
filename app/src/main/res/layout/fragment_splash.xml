@@ -7,8 +7,6 @@
     android:orientation="vertical"
     android:background="@color/white"
     tools:context=".ui.SplashFragment">
-
-
     <ImageView
         android:id="@+id/iv_finboost"
         android:layout_width="150dp"

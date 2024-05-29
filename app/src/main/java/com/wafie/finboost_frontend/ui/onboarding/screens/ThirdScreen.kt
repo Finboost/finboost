@@ -1,5 +1,4 @@
 package com.wafie.finboost_frontend.ui.onboarding.screens
-
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
@@ -37,6 +36,5 @@ class ThirdScreen : Fragment() {
             .edit()
         sharedPref.putBoolean("Finished", true)
         sharedPref.apply()
-    }
 
 }

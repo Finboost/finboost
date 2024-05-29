@@ -41,7 +41,6 @@ class OnboardingFragment : Fragment() {
         springDotsIndicator.attachTo(viewPager)
 
         return view
-
     }
 
 }

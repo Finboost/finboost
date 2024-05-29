@@ -6,4 +6,20 @@
     <string name="ob_desc_1">Boost your financial growth using Ai technology</string>
     <string name="ob_title_2">Financial Literation</string>
     <string name="ob_desc_2">Get to know more about financial with article that we provide</string>
+    <string name="welcome_title">Konsultasikan masalah finansial \nanda dengan \nkami</string>
+    <string name="welcome_desc">Tingkatkan pertumbuhan \nfinansial Anda dengan \nteknologi Ai dan pakar keuangan</string>
+    <string name="skip">SKIP</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="get_started">Get Started</string>
+    <string name="sign_up_title">Buat akun \nmu terlebih dahulu yaa</string>
+    <string name="sign_in_title">Selamat Datang \nKembali di Finboost</string>
+    <string name="email">Email</string>
+    <string name="passowrd">Passowrd</string>
+    <string name="gender">Pilih Gender</string>
+    <string name="role">Pilih Role</string>
+    <string name="tanggal_lahir">Tanggal Lahir</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="no_handphone">No Handphone</string>
+    <string name="umur">Umur</string>
 </resources>

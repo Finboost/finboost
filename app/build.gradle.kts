@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -53,5 +54,7 @@ dependencies {
 
     //ui lib
     implementation("com.tbuonomo:dotsindicator:5.0")
+    implementation ("com.google.android.flexbox:flexbox:3.0.0")
+
 
 }

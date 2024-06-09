@@ -32,7 +32,8 @@ class SignInViewModel(private val userPreference: UserPreference): ViewModel() {
 
                     // Save the session
                     viewModelScope.launch {
-                        signInResponse?.let {
+                        signInResponse?.data?.let {
+                            Log.d(TAG, "Saving session with token: ${it.accessToken}")
                             userPreference.saveSession(
                                 UserModel(
                                     email = it.email ?: "",
@@ -69,7 +70,7 @@ class SignInViewModel(private val userPreference: UserPreference): ViewModel() {
                 if (response.isSuccessful) {
                     val refreshResponse = response.body()
                     viewModelScope.launch {
-                        refreshResponse?.let {
+                        refreshResponse?.data?.let {
                             userPreference.saveSession(
                                 UserModel(
                                     email = it.email ?: "",

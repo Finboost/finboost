@@ -1,6 +1,7 @@
 package com.wafie.finboost_frontend.data.preferences
 
 import android.content.Context
+import android.util.Log
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
@@ -16,6 +17,7 @@ val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "us
 
 class UserPreference private constructor(private val dataStore: DataStore<Preferences>){
     suspend fun saveSession(user: UserModel) {
+        Log.d("UserPref", "Saving session: ${user.accessToken}")
         dataStore.edit { preferences ->
             preferences[EMAIL_KEY] = user.email
             preferences[TOKEN_KEY] = user.accessToken

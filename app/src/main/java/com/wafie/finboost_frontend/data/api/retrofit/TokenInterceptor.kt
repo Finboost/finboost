@@ -46,6 +46,6 @@ class TokenInterceptor(private val userPreference: UserPreference) : Interceptor
     private fun refreshAccessToken(): String {
         //call the endpoint here
         val refreshResponse = ApiConfig.getApiService().refreshToken().execute()
-        return refreshResponse.body()?.accessToken ?: ""
+        return refreshResponse.body()?.data?.accessToken ?: ""
     }
 }

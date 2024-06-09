@@ -2,6 +2,7 @@ package com.wafie.finboost_frontend.data.api.retrofit
 
 import com.wafie.finboost_frontend.data.api.response.auth.SignInResponse
 import com.wafie.finboost_frontend.data.api.response.auth.SignUpResponse
+import com.wafie.finboost_frontend.data.api.response.chat.FinAiResponse
 import com.wafie.finboost_frontend.data.api.response.role.RoleResponse
 import com.wafie.finboost_frontend.data.api.response.role.RolesItem
 import com.wafie.finboost_frontend.data.model.SignUpData
@@ -10,6 +11,7 @@ import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Path
 
@@ -43,4 +45,12 @@ interface ApiServices {
      //RefreshToken
      @GET("token/refresh")
      fun refreshToken() :Call <SignInResponse>
+
+     //FinAi Chat
+     @FormUrlEncoded
+     @POST("chats/ai/predict")
+     fun sendChat(
+         @Header("Authorization") token: String,
+         @Field("question") question : String
+     ) : Call<FinAiResponse>
 }

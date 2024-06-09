@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,9 +26,13 @@ class ThirdScreen : Fragment() {
         _binding =   FragmentThirdScreenBinding.inflate(inflater, container, false)
 
         binding.btGetStarted.setOnClickListener {
-            val intent = Intent(requireContext(), WelcomeActivity::class.java)
-            startActivity(intent)
-            onBoardFinished()
+            Handler(Looper.getMainLooper()).post {
+                val intent = Intent(requireContext(), WelcomeActivity::class.java)
+                startActivity(intent)
+                activity?.finish()
+                onBoardFinished()
+            }
+
         }
         return binding.root
     }
@@ -38,6 +44,11 @@ class ThirdScreen : Fragment() {
         sharedPref.putBoolean("Finished", true)
         sharedPref.apply()
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

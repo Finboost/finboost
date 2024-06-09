@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main"
-    tools:context=".auth.signup.SignUpActivity">
+    tools:context=".ui.auth.signup.SignUpActivity">
 
     <TextView
         android:id="@+id/tv_sign_up_title"
@@ -39,7 +39,7 @@
             >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tf_name"
+                android:id="@+id/edtFullName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/nama_lengkap"
@@ -57,7 +57,7 @@
             >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tf_email"
+                android:id="@+id/edtEmail"
                 android:hint="@string/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
             >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tf_phone"
+                android:id="@+id/edtPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
@@ -97,6 +97,7 @@
             >
 
             <AutoCompleteTextView
+                android:id="@+id/gender_autocomplete"
                 android:hint="@string/gender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -115,6 +116,7 @@
             >
 
             <AutoCompleteTextView
+                android:id="@+id/role_autocomplete"
                 android:layout_width="match_parent"
                 android:hint="@string/role"
                 android:layout_height="wrap_content"
@@ -132,7 +134,7 @@
             app:endIconMode="custom">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tf_age"
+                android:id="@+id/edtAge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
@@ -152,7 +154,7 @@
             app:endIconMode="password_toggle">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tf_password"
+                android:id="@+id/edtPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
@@ -164,8 +166,8 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/bt_get_started"
-            android:layout_width="290dp"
+            android:id="@+id/btn_signup"
+            android:layout_width="348dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="25dp"

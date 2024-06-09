@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.wafie.finboost_frontend.MainActivity
 import com.wafie.finboost_frontend.R
-import com.wafie.finboost_frontend.auth.signin.SignInActivity
-import com.wafie.finboost_frontend.auth.signup.SignUpActivity
+import com.wafie.finboost_frontend.ui.auth.signin.SignInActivity
+import com.wafie.finboost_frontend.ui.auth.signup.SignUpActivity
 import com.wafie.finboost_frontend.databinding.ActivityWelcomeBinding
 
 class WelcomeActivity : AppCompatActivity() {
@@ -21,7 +21,7 @@ class WelcomeActivity : AppCompatActivity() {
 
     private fun authAction() {
         binding.btnSignin.setOnClickListener {
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this,SignInActivity::class.java))
         }
 
         binding.btnSignup.setOnClickListener {

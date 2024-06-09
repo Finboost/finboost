@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main"
-    tools:context=".auth.signin.SignInActivity">
+    tools:context=".ui.auth.signin.SignInActivity">
 
     <TextView
         android:id="@+id/tv_sign_up_title"
@@ -22,7 +22,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="700dp"
         android:background="@drawable/auth_bg"
         android:orientation="vertical"
         android:layout_marginTop="20dp"
@@ -35,11 +35,11 @@
             android:id="@+id/text_field_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="90dp"
             app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tf_email"
+                android:id="@+id/edtEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/email"
@@ -58,7 +58,7 @@
             app:endIconMode="password_toggle">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tf_password"
+                android:id="@+id/edtPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
@@ -70,22 +70,44 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/bt_get_started"
-            android:layout_width="250dp"
+            android:id="@+id/btnSignIn"
+            android:layout_width="348dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="40dp"
             android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="15dp"
             android:background="@drawable/button_filled"
             android:text="@string/sign_in"
             android:textSize="20sp" />
+
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="Or"
+            />
+
+        <Button
+            android:id="@+id/btnSignInGoogle"
+            android:layout_width="348dp"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="-20dp"
+            android:background="@drawable/button_transparent"
+            android:text="@string/sign_in_with_google"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/tv_no_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="120dp"
             android:layout_marginBottom="90dp"
-            android:text="Belum Punya akun? Sign Up "
+            android:text="@string/no_account"
             />
     </LinearLayout>
 

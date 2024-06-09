@@ -21,4 +21,6 @@
     <string name="no_handphone">No Handphone</string>
     <string name="umur">Umur</string>
     <string name="home_title_content">RAIH FINANCIAL GROWTH \nDENGAN LAYANAN KAMI</string>
+    <string name="no_account">Belum Punya akun? Sign Up</string>
+    <string name="sign_in_with_google">Sign In With Google</string>
 </resources>

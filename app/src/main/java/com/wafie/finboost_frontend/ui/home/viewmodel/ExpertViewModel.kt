@@ -32,7 +32,6 @@ class ExpertViewModel(private val userPreference: UserPreference): ViewModel() {
     private val _selectedExpertById = MutableLiveData<User?>()
     val selectedExpertById: LiveData<User?> = _selectedExpertById
 
-
     fun getListExpert(
     ) {
         viewModelScope.launch {

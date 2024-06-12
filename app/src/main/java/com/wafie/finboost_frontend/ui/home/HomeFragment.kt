@@ -27,9 +27,6 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var userPreference: UserPreference
 
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

@@ -100,9 +100,7 @@ class ExpertDetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
         binding.topAppBar.setNavigationOnClickListener {
-            onBackPressed() // Kembali ke halaman sebelumnya
+            onBackPressed()
         }
     }
-
-
 }

@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Finboostfrontend"
         tools:targetApi="31">
         <activity
+            android:name=".ui.chat.expert.ChatRoom"
+            android:exported="false" />
+        <activity
             android:name=".ui.home.ExpertDetailActivity"
             android:exported="false" />
         <activity

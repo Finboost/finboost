@@ -39,7 +39,7 @@ class ExpertAdapter: ListAdapter<UsersItem, ExpertAdapter.ExpertViewHolder>(DIFF
 
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, ExpertDetailActivity::class.java)
-            intent.putExtra("EXTRA_USER", expert.id)
+            intent.putExtra("EXTRA_EXPERT", expert.id)
             holder.itemView.context.startActivity(intent)
         }
     }

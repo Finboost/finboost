@@ -57,10 +57,11 @@ interface ApiServices {
          @Field("question") question : String
      ) : Call<FinAiResponse>
 
-     //Get User where role= Expert
-     @GET("users?role=Expert")
+     //Get User by Role
+     @GET("users")
      fun getUserRole(
          @Header("Authorization") token: String,
+         @Query("role") role: String
      ): Call<UserResponse>
 
      //Get Expert Id

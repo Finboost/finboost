@@ -19,6 +19,7 @@ class SignInViewModel(private val userPreference: UserPreference): ViewModel() {
     private val _signInResult = MutableLiveData<SignInResponse?>()
     val signInResult: LiveData<SignInResponse?> = _signInResult
 
+
     fun signIn(email: String, password: String) {
         val client = ApiConfig.getApiService().signIn(email, password)
         client.enqueue(object : Callback<SignInResponse> {

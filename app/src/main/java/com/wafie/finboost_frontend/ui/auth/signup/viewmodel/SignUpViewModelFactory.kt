@@ -8,7 +8,7 @@ class SignUpViewModelFactory(private val userPreference: UserPreference) : ViewM
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SignUpViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return SignUpViewModel(userPreference) as T
+            return SignUpViewModel() as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

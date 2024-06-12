@@ -28,4 +28,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="about">Tentang Expert</string>
     <string name="dummy_desc">Wafie adalah seoarang expert dalam bidang financial. Dia merupakan lulusan Ekonomi Universitas UI dan Manajemen ITB. Dengan segudang pengalaman nya di bidang financial, Waf</string>
+    <string name="profile_expert">Profile Expert</string>
+    <string name="jadwal_tersedia">Jadwal Tersedia</string>
+    <string name="lihat_detail_expert">Lihat Detail Expert</string>
 </resources>

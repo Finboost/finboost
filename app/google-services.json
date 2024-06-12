@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "160784853005",
+    "firebase_url": "https://finboost-frontend-default-rtdb.firebaseio.com",
+    "project_id": "finboost-frontend",
+    "storage_bucket": "finboost-frontend.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:160784853005:android:492365050a4fdb74160d44",
+        "android_client_info": {
+          "package_name": "com.wafie.finboost_frontend"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClsn1Dx-0QhvD_Mxqt40ivzSzyFjm3sEI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

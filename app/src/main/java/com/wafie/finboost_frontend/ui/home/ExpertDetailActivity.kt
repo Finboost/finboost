@@ -33,11 +33,11 @@ class ExpertDetailActivity : AppCompatActivity() {
         binding = ActivityExpertDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val userId = intent.getStringExtra("EXTRA_USER")
+        val expertId = intent.getStringExtra("EXTRA_EXPERT")
 
         tabLayout()
 
-        userId?.let {
+        expertId?.let {
             expertViewModel = ViewModelProvider(this,
                 ExpertViewModelFactory(UserPreference
                     .getInstance(this.dataStore)))[ExpertViewModel::class.java]
@@ -54,7 +54,7 @@ class ExpertDetailActivity : AppCompatActivity() {
                     binding.topAppBar.title = "Expert ${expert.fullName}"
                 }
             })
-            Log.d("ExpertDetail", "id: $userId")
+            Log.d("ExpertDetail", "id: $expertId")
         }
 
         onBackPress()

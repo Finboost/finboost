@@ -11,7 +11,7 @@ import com.wafie.finboost_frontend.data.preferences.UserPreference
 import kotlinx.coroutines.launch
 import retrofit2.*
 
-class SignUpViewModel(private val userPreference: UserPreference): ViewModel() {
+class SignUpViewModel(): ViewModel() {
 
     //Sign Up
     private val _signUpResult = MutableLiveData<SignUpResponse>()

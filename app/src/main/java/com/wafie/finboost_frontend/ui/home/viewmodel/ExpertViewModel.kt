@@ -32,11 +32,12 @@ class ExpertViewModel(private val userPreference: UserPreference): ViewModel() {
     private val _selectedExpertById = MutableLiveData<User?>()
     val selectedExpertById: LiveData<User?> = _selectedExpertById
 
-    fun getListExpert(
+    fun getListUser(
+        role: String
     ) {
         viewModelScope.launch {
             val client = ApiConfig.getApiService()
-                .getUserRole("Bearer $token")
+                .getUserRole("Bearer $token", role)
 
             Log.d(TAG, "token: Bearer $token")
             client.enqueue(object : Callback<UserResponse> {

@@ -7,10 +7,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.wafie.finboost_frontend.data.api.response.auth.SignUpResponse
 import com.wafie.finboost_frontend.data.api.retrofit.ApiConfig
+import com.wafie.finboost_frontend.data.preferences.UserPreference
 import kotlinx.coroutines.launch
 import retrofit2.*
 
-class SignUpViewModel(): ViewModel() {
+class SignUpViewModel(private val userPreference: UserPreference): ViewModel() {
 
     //Sign Up
     private val _signUpResult = MutableLiveData<SignUpResponse>()

@@ -8,7 +8,7 @@ import com.wafie.finboost_frontend.data.api.response.role.RolesItem
 import com.wafie.finboost_frontend.data.api.response.role.RoleResponse
 import com.wafie.finboost_frontend.data.api.retrofit.ApiConfig
 import retrofit2.*
-class RolesViewModel: ViewModel() {
+class RolesViewModel(): ViewModel() {
 
     private val _roles = MutableLiveData<List<RolesItem>>()
     val roles: LiveData<List<RolesItem>> = _roles

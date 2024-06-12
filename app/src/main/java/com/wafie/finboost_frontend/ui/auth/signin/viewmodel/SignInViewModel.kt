@@ -9,6 +9,7 @@ import com.wafie.finboost_frontend.data.api.response.auth.SignInResponse
 import com.wafie.finboost_frontend.data.api.retrofit.ApiConfig
 import com.wafie.finboost_frontend.data.model.UserModel
 import com.wafie.finboost_frontend.data.preferences.UserPreference
+import com.wafie.finboost_frontend.utils.Utils
 import kotlinx.coroutines.launch
 
 import retrofit2.*
@@ -34,14 +35,20 @@ class SignInViewModel(private val userPreference: UserPreference): ViewModel() {
                     viewModelScope.launch {
                         signInResponse?.data?.let {
                             Log.d(TAG, "Saving session with token: ${it.accessToken}")
+                            val decodedJwt = Utils.jwtDecoder(it.accessToken ?:"")
+                            val id = decodedJwt?.getString("id") ?: ""
+                            val fullName = decodedJwt?.getString("fullName") ?: ""
                             userPreference.saveSession(
                                 UserModel(
+                                    id = id,
+                                    fullName = fullName,
                                     email = it.email ?: "",
                                     accessToken = it.accessToken ?: "",
                                     refreshToken = it.refreshToken ?: "",
                                     isLogin = true
                                 )
                             )
+                            Log.d(TAG, "id: $id \n fullName: $fullName")
                         }
                     }
                 } else {
@@ -71,8 +78,13 @@ class SignInViewModel(private val userPreference: UserPreference): ViewModel() {
                     val refreshResponse = response.body()
                     viewModelScope.launch {
                         refreshResponse?.data?.let {
+                            val decodedJwt = Utils.jwtDecoder(it.accessToken ?:"")
+                            val id = decodedJwt?.getString("id") ?: ""
+                            val fullName = decodedJwt?.getString("fullName") ?: ""
                             userPreference.saveSession(
                                 UserModel(
+                                    id = id,
+                                    fullName = fullName,
                                     email = it.email ?: "",
                                     accessToken = it.accessToken ?: "",
                                     refreshToken = it.refreshToken ?: "",

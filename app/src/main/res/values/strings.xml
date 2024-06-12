@@ -23,4 +23,9 @@
     <string name="home_title_content">RAIH FINANCIAL GROWTH \nDENGAN LAYANAN KAMI</string>
     <string name="no_account">Belum Punya akun? Sign Up</string>
     <string name="sign_in_with_google">Sign In With Google</string>
+    <string name="dumy_detail_text">Wafie Abiyya El Hanief, CFP, ChFC</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about">Tentang Expert</string>
+    <string name="dummy_desc">Wafie adalah seoarang expert dalam bidang financial. Dia merupakan lulusan Ekonomi Universitas UI dan Manajemen ITB. Dengan segudang pengalaman nya di bidang financial, Waf</string>
 </resources>

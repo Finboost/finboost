@@ -12,6 +12,8 @@ import androidx.lifecycle.lifecycleScope
 import com.wafie.finboost_frontend.data.preferences.UserPreference
 import com.wafie.finboost_frontend.data.preferences.dataStore
 import com.wafie.finboost_frontend.databinding.ActivitySignUpBinding
+import com.wafie.finboost_frontend.ui.auth.signin.viewmodel.SignInViewModel
+import com.wafie.finboost_frontend.ui.auth.signin.viewmodel.SignInViewModelFactory
 import com.wafie.finboost_frontend.ui.auth.signup.viewmodel.SignUpViewModel
 import com.wafie.finboost_frontend.ui.auth.signup.viewmodel.SignUpViewModelFactory
 import com.wafie.finboost_frontend.ui.viewmodel.RolesViewModel

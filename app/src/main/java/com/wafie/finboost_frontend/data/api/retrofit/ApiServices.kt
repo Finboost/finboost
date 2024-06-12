@@ -5,6 +5,8 @@ import com.wafie.finboost_frontend.data.api.response.auth.SignUpResponse
 import com.wafie.finboost_frontend.data.api.response.chat.FinAiResponse
 import com.wafie.finboost_frontend.data.api.response.role.RoleResponse
 import com.wafie.finboost_frontend.data.api.response.role.RolesItem
+import com.wafie.finboost_frontend.data.api.response.users.ExpertDetailResponse
+import com.wafie.finboost_frontend.data.api.response.users.UserResponse
 import com.wafie.finboost_frontend.data.model.SignUpData
 import retrofit2.Call
 import retrofit2.http.Body
@@ -14,6 +16,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiServices {
     //getAllRoles
@@ -53,4 +56,17 @@ interface ApiServices {
          @Header("Authorization") token: String,
          @Field("question") question : String
      ) : Call<FinAiResponse>
+
+     //Get User where role= Expert
+     @GET("users?role=Expert")
+     fun getUserRole(
+         @Header("Authorization") token: String,
+     ): Call<UserResponse>
+
+     //Get Expert Id
+     @GET("users/{userId}")
+     fun getExpertId(
+         @Header("Authorization") token: String,
+         @Path("userId") userId : String
+     ): Call<ExpertDetailResponse>
 }

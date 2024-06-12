@@ -8,13 +8,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.wafie.finboost_frontend.data.preferences.UserPreference
 import com.wafie.finboost_frontend.data.preferences.dataStore
 import com.wafie.finboost_frontend.databinding.ActivityFinAiChatBinding
+import com.wafie.finboost_frontend.ui.chat.finAi.adapter.ChatItem
 import com.wafie.finboost_frontend.ui.chat.finAi.adapter.FinAiAdapter
 import com.wafie.finboost_frontend.ui.chat.finAi.viewmodel.FinAiViewModel
 import com.wafie.finboost_frontend.ui.chat.finAi.viewmodel.FinAiViewModelFactory
 
 class FinAiChat : AppCompatActivity() {
     private lateinit var binding: ActivityFinAiChatBinding
-//    private val viewModel: FinAiViewModel by viewModels()
     private val viewModel: FinAiViewModel by viewModels {
         FinAiViewModelFactory(UserPreference.getInstance(dataStore))
 }
@@ -35,15 +35,30 @@ class FinAiChat : AppCompatActivity() {
             if (message.isNotBlank()) {
                 viewModel.sendQuestion(message)
                 binding.edtChatAi.text!!.clear()
+
+                val currentList = chatAdapter.currentList.toMutableList()
+                currentList.add(ChatItem.UserQuestion(message))
+                chatAdapter.submitList(currentList)
             }
         }
 
-        viewModel.question.observe(this, Observer { question ->
-            chatAdapter.submitList(question)
+        viewModel.aiAnswer.observe(this, Observer { aiAnswer ->
+            val currentList = chatAdapter.currentList.toMutableList()
+            currentList.add(ChatItem.AiAnswer(aiAnswer))
+            chatAdapter.submitList(currentList)
         })
+
 
         viewModel.error.observe(this, Observer { error ->
             // Handle error
         })
+
+        setSupportActionBar(binding.topAppBar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+
+        binding.topAppBar.setNavigationOnClickListener {
+            onBackPressed() // Kembali ke halaman sebelumnya
+        }
     }
 }

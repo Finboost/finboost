@@ -9,6 +9,7 @@ data class SignInResponse(
 )
 
 data class SignInData(
+	@SerializedName("fullName") val fullName: String? = null,
 	@SerializedName("accessToken") val accessToken: String? = null,
 	@SerializedName("refreshToken") val refreshToken: String? = null,
 	@SerializedName("email") val email: String? = null

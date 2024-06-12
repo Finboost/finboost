@@ -1,14 +1,14 @@
-package com.wafie.finboost_frontend.ui.auth.signup.viewmodel
+package com.wafie.finboost_frontend.ui.home.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.wafie.finboost_frontend.data.preferences.UserPreference
 
-class SignUpViewModelFactory(private val userPreference: UserPreference) : ViewModelProvider.NewInstanceFactory() {
+class ExpertViewModelFactory(private val userPreference: UserPreference): ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(SignUpViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(ExpertViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return SignUpViewModel(userPreference) as T
+            return ExpertViewModel(userPreference) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

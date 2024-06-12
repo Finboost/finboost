@@ -69,6 +69,9 @@ dependencies {
     //ui lib
     implementation("com.tbuonomo:dotsindicator:5.0")
     implementation ("com.google.android.flexbox:flexbox:3.0.0")
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 
+    //Json lib
+    implementation("org.json:json:20210307")
 
 }

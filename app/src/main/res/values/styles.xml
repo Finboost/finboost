@@ -4,4 +4,8 @@
             <item name="cornerFamily">rounded</item>
             <item name="cornerSize">16dp</item> <!-- Sesuaikan nilai ini untuk radius sudut yang diinginkan -->
         </style>
+
+    <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
 </resources>

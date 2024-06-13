@@ -60,6 +60,7 @@
                 android:id="@+id/ib_finAi"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:src="@drawable/finai_robot"
                 android:background="@drawable/image_button_bg"
                 android:contentDescription="Fin Ai" />
 

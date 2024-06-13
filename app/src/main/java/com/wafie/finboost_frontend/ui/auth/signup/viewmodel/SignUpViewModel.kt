@@ -17,6 +17,8 @@ class SignUpViewModel(): ViewModel() {
     private val _signUpResult = MutableLiveData<SignUpResponse>()
     val signUpResult: LiveData<SignUpResponse> = _signUpResult
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
     fun signUp(
         name: String,
         email: String,
@@ -28,10 +30,13 @@ class SignUpViewModel(): ViewModel() {
     ) {
         viewModelScope.launch {
             Log.d(TAG, "Request Data - fullName: $name, email: $email, password: $password, phoneNumber: $phoneNumber, gender: $gender, roleId: $roleId, age: $age")
+            _isLoading.value = false
             val client = ApiConfig.getApiService().signUp(name, email, gender, age, phoneNumber, password, roleId)
             client.enqueue(object : Callback<SignUpResponse> {
                 override fun onResponse(call: Call<SignUpResponse>, response: Response<SignUpResponse>) {
+                    _isLoading.value = true
                     if (response.isSuccessful) {
+                        _isLoading.value = false
                         Log.d(TAG, "msg ${response.message()}")
                         _signUpResult.value = response.body()
                     } else {

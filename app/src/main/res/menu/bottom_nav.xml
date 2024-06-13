@@ -11,7 +11,7 @@
         android:title="Message" />
     <item
         android:id="@+id/finAi"
-        android:icon="@drawable/ic_add"
+        android:icon="@drawable/finai"
         android:title="FinAi" />
     <item
         android:id="@+id/profile"

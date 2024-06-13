@@ -1,8 +1,10 @@
 package com.wafie.finboost_frontend.ui.auth.signin
 
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.wafie.finboost_frontend.MainActivity
@@ -25,6 +27,10 @@ class SignInActivity : AppCompatActivity() {
 
         signIn()
 
+        signInViewModel.isLoading.observe(this) {
+            showLoading(it)
+        }
+
     }
 
     private fun signIn() {
@@ -42,12 +48,30 @@ class SignInActivity : AppCompatActivity() {
         signInViewModel.signInResult.observe(this) { response ->
             response?.let {
                 if (it.status == "success") {
-                    startActivity(Intent(this@SignInActivity, MainActivity::class.java))
-                    Toast.makeText(this, "Login Berhasil", Toast.LENGTH_SHORT).show()
+                    AlertDialog.Builder(this)
+                        .setTitle("Login Berhasil")
+                        .setMessage("Anda berhasil login.")
+                        .setPositiveButton("OK") { _, _ ->
+                            startActivity(Intent(this@SignInActivity, MainActivity::class.java))
+                            finish()
+                        }
+                        .show()
+
+
                 } else {
                     Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
                 }
             }
         }
+
     }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.GONE else View.VISIBLE
+        binding.btnSignInGoogle.visibility = if (isLoading) View.VISIBLE else  View.GONE
+        binding.btnSignIn.visibility = if (isLoading) View.VISIBLE else  View.GONE
+        binding.tvNoAccount.visibility = if (isLoading) View.VISIBLE else  View.GONE
+        binding.tvOr.visibility = if (isLoading) View.VISIBLE else  View.GONE
+    }
+
 }

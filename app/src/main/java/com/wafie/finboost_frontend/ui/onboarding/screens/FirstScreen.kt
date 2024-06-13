@@ -1,5 +1,7 @@
 package com.wafie.finboost_frontend.ui.onboarding.screens
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -31,13 +33,22 @@ class FirstScreen : Fragment() {
         }
 
         binding.btnSkip.setOnClickListener {
+            onBoardFinished()
             Handler(Looper.getMainLooper()).post {
                 val intent = Intent(requireContext(), WelcomeActivity::class.java)
                 startActivity(intent)
-                activity?.finish() // Finish the current activity if needed
+                activity?.finish()
             }
         }
         return binding.root
+    }
+
+    @SuppressLint("CommitPrefEdits")
+    private fun onBoardFinished() {
+        val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
+            .edit()
+        sharedPref.putBoolean("Finished", true)
+        sharedPref.apply()
     }
     override fun onDestroyView() {
         super.onDestroyView()

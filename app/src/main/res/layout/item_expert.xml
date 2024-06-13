@@ -33,7 +33,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="10dp">
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="13dp"
+                >
 
                 <!-- Title, secondary and supporting text -->
                 <TextView
@@ -51,7 +53,8 @@
             <com.google.android.flexbox.FlexboxLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
+                android:paddingHorizontal="13dp"
+
                 app:flexWrap="wrap">
 
                 <TextView
@@ -101,12 +104,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="12dp"
+                android:paddingHorizontal="18dp"
                 android:paddingVertical="13dp"
                 android:textColor="@color/main"
                 android:textStyle="bold"
                 android:text="@string/lihat_detail_expert"
-                android:textSize="13sp" />
+                android:textSize="12sp" />
 
 
 

@@ -19,16 +19,20 @@ class SignInViewModel(private val userPreference: UserPreference): ViewModel() {
     private val _signInResult = MutableLiveData<SignInResponse?>()
     val signInResult: LiveData<SignInResponse?> = _signInResult
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
 
     fun signIn(email: String, password: String) {
+        _isLoading.value = false
         val client = ApiConfig.getApiService().signIn(email, password)
         client.enqueue(object : Callback<SignInResponse> {
             override fun onResponse(
                 call: Call<SignInResponse>,
                 response: Response<SignInResponse>
             ) {
+                _isLoading.value = true
                 if (response.isSuccessful) {
-                    Log.d(TAG, "msg ${response.message()}")
+                    _isLoading.value = false
                     val signInResponse = response.body()
                     _signInResult.value = signInResponse
 

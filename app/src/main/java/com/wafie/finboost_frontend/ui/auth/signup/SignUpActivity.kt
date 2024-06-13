@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -44,6 +45,10 @@ class SignUpActivity : AppCompatActivity() {
             }
         })
 
+        signUpViewModel.isLoading.observe(this, Observer {
+            showLoading(it)
+        })
+
         lifecycleScope.launch {
             roleViewModel.fetchRoles()
         }
@@ -82,7 +87,7 @@ class SignUpActivity : AppCompatActivity() {
                     signUpResponse?.let {
                         if (it.status == "success") {
                             Toast.makeText(this, "Sign-up berhasil", Toast.LENGTH_SHORT).show()
-
+                            clearEditText()
                         } else if(it.status == "fail") {
                             Toast.makeText(this, "Sign-up gagal: ${it.message}", Toast.LENGTH_SHORT).show()
                         }
@@ -92,5 +97,17 @@ class SignUpActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.GONE else View.VISIBLE
+        binding.btnSignup.visibility = if (isLoading) View.VISIBLE else  View.GONE
+    }
+    private fun clearEditText(){
+        binding.edtAge.setText("")
+        binding.edtEmail.setText("")
+        binding.edtPassword.setText("")
+        binding.edtFullName.setText("")
+        binding.edtPhone.setText("")
+        binding.roleAutocomplete.setText("")
     }
 }

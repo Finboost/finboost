@@ -2,7 +2,6 @@ package com.wafie.finboost_frontend.ui.chat.finAi
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.window.OnBackInvokedDispatcher
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,9 +18,10 @@ class FinAiChat : AppCompatActivity() {
     private lateinit var binding: ActivityFinAiChatBinding
     private val viewModel: FinAiViewModel by viewModels {
         FinAiViewModelFactory(UserPreference.getInstance(dataStore))
-}
+    }
     private lateinit var chatAdapter: FinAiAdapter
     private lateinit var aiSuggestedQuetionAdapter: FinAiQuestionAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFinAiChatBinding.inflate(layoutInflater)
@@ -33,21 +33,31 @@ class FinAiChat : AppCompatActivity() {
             adapter = chatAdapter
         }
 
-        aiSuggestedQuetionAdapter = FinAiQuestionAdapter(listOf())
+        aiSuggestedQuetionAdapter = FinAiQuestionAdapter(listOf()) { question ->
+            viewModel.sendQuestion(question)
+
+            val currentList = chatAdapter.currentList.toMutableList()
+            currentList.add(ChatItem.UserQuestion(question))
+            chatAdapter.submitList(currentList)
+
+            // Clear input text after send question
+            binding.edtChatAi.text!!.clear()
+        }
         binding.rvAiSuggestion.apply {
             layoutManager = LinearLayoutManager(this@FinAiChat, LinearLayoutManager.HORIZONTAL, false)
             adapter = aiSuggestedQuetionAdapter
         }
 
         binding.btnSend.setOnClickListener {
-            val message = binding.edtChatAi.text.toString()
+            val message = binding.edtChatAi.text.toString().trim()
             if (message.isNotBlank()) {
                 viewModel.sendQuestion(message)
-                binding.edtChatAi.text!!.clear()
 
                 val currentList = chatAdapter.currentList.toMutableList()
                 currentList.add(ChatItem.UserQuestion(message))
                 chatAdapter.submitList(currentList)
+
+                binding.edtChatAi.text!!.clear()
             }
         }
 
@@ -61,24 +71,24 @@ class FinAiChat : AppCompatActivity() {
             aiSuggestedQuetionAdapter.updateSuggestions(suggestions)
         })
 
+
         viewModel.aiSuggestion(5, "-")
+
 
         viewModel.error.observe(this, Observer { error ->
             // Handle error
         })
 
-    }
-
-
-    override fun onBackPressed() {
-        super.onBackPressed()
 
         setSupportActionBar(binding.topAppBar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-
         binding.topAppBar.setNavigationOnClickListener {
             onBackPressed()
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }

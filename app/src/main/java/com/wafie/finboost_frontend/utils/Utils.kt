@@ -1,7 +1,12 @@
 package com.wafie.finboost_frontend.utils
 
 import android.util.Base64
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import org.json.JSONObject
+import retrofit2.http.Multipart
+import java.io.File
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -44,5 +49,10 @@ object Utils {
         } catch (e: NumberFormatException) {
             "Invalid number"
         }
+    }
+
+    fun convertFileToMultipart(file: File, name: String) : MultipartBody.Part{
+        val requestFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
+        return MultipartBody.Part.createFormData(name, file.name, requestFile)
     }
 }

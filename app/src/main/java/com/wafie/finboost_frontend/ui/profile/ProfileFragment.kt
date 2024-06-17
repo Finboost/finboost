@@ -1,12 +1,20 @@
 package com.wafie.finboost_frontend.ui.profile
 
+import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.provider.Settings
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -21,6 +29,7 @@ import com.wafie.finboost_frontend.ui.profile.personalData.viewmodel.PersonalDat
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import com.wafie.finboost_frontend.utils.Utils.rupiahFormatter
+import java.io.File
 
 class ProfileFragment : Fragment() {
 
@@ -28,6 +37,8 @@ class ProfileFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var userPreference: UserPreference
     private lateinit var viewModel: PersonalDataViewModel
+    private val PICK_IMAGE_REQUEST = 1
+    private lateinit var userId: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,8 +46,6 @@ class ProfileFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
-
-
         return binding.root
     }
 
@@ -46,7 +55,7 @@ class ProfileFragment : Fragment() {
         userPreference = UserPreference(requireContext().dataStore)
 
         lifecycleScope.launch {
-            val userId = userPreference.getSession().first().id
+            userId = userPreference.getSession().first().id
             val userName = userPreference.getSession().first().fullName
 
             viewModel = ViewModelProvider(this@ProfileFragment,
@@ -54,7 +63,7 @@ class ProfileFragment : Fragment() {
 
             viewModel.getUserProfileById(userId)
 
-            viewModel.userProfileById.observe(viewLifecycleOwner, Observer {userProfile ->
+            viewModel.userProfileById.observe(viewLifecycleOwner, Observer { userProfile ->
                 if (userProfile != null) {
                     with(binding) {
                         Glide.with(this@ProfileFragment)
@@ -66,7 +75,12 @@ class ProfileFragment : Fragment() {
                     }
                 }
             })
+        }
 
+        binding.ivUserProfile.setOnClickListener {
+            if(checkAndRequestPermissions()) {
+                openGallery()
+            }
         }
 
         logout()
@@ -76,12 +90,72 @@ class ProfileFragment : Fragment() {
             startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
         }
 
-
         //navigate to 'Data Pribadi'
         binding.tvUserPersonal.setOnClickListener {
             val intent = Intent(requireContext(), PersonalDataActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun checkAndRequestPermissions(): Boolean {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(requireActivity(), arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), STORAGE_PERMISSION_CODE)
+                return false
+            }
+        }
+        return true
+    }
+
+    private fun openGallery() {
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        startActivityForResult(intent, PICK_IMAGE_REQUEST)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
+            val selectedImageUri: Uri = data.data!!
+            val filePath = getRealPathFromURI(selectedImageUri)
+            if (filePath != null) {
+                val file = File(filePath)
+                val mimeType = requireActivity().contentResolver.getType(selectedImageUri)
+                if (mimeType == "image/jpeg" || mimeType == "image/png") {
+                    updateUserPhoto(file)
+                } else {
+                    Log.e("ProfileFragment", "Invalid file type. Only JPG, PNG are allowed!")
+                }
+            }
+        }
+    }
+
+
+    private fun getRealPathFromURI(uri: Uri): String? {
+        var path: String? = null
+        val projection = arrayOf(MediaStore.Images.Media.DATA)
+        val cursor = requireActivity().contentResolver.query(uri, projection, null, null, null)
+        cursor?.use {
+            if (it.moveToFirst()) {
+                val columnIndex = it.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+                path = it.getString(columnIndex)
+            }
+        }
+        return path
+    }
+
+    private fun updateUserPhoto(file: File) {
+        viewModel.updateUserPhoto(
+            userId,
+            file,
+            onComplete = {
+                // Handle success, update UI or show a message
+                viewModel.getUserProfileById(userId)
+            },
+            onError = { errorMessage ->
+                // Handle error, show a message
+                Log.e("ProfileFragment", "Error updating photo: $errorMessage")
+            }
+        )
     }
 
     private fun navigateToWelcome() {
@@ -98,8 +172,30 @@ class ProfileFragment : Fragment() {
             }
         }
     }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            STORAGE_PERMISSION_CODE -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    openGallery()
+                } else {
+                    Log.e("ProfileFragment", "Permission denied")
+                }
+            }
+        }
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        private const val PICK_IMAGE_REQUEST = 1
+        private const val STORAGE_PERMISSION_CODE = 101
     }
 }

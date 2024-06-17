@@ -9,4 +9,5 @@
     <color name="green">#43A047</color>
     <color name="red">#F44336</color>
     <color name="orange">#FF9800</color>
+    <color name="shimmer">#E0E0E0</color>
 </resources>

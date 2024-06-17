@@ -161,7 +161,7 @@
                 android:id="@+id/ivExpanse"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="30dp"
                 android:background="@drawable/circle_expanse_bg"
                 android:foregroundGravity="center"
                 android:padding="10dp"

@@ -68,7 +68,6 @@ class ExpertDetailActivity : AppCompatActivity() {
         viewPager2.adapter = adapter
 
         tabLayout.addTab(tabLayout.newTab().setText("Profile Expert"))
-        tabLayout.addTab(tabLayout.newTab().setText("Jadwal"))
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {

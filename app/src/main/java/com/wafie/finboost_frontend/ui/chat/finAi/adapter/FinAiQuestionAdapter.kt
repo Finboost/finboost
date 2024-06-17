@@ -7,11 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.wafie.finboost_frontend.R
 
-class FinAiQuestionAdapter(private var suggestions: List<String>) : RecyclerView.Adapter<FinAiQuestionAdapter.ViewHolder>() {
-
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val suggestionTextView: TextView = view.findViewById(R.id.tv_ai_suggestion)
-    }
+class FinAiQuestionAdapter(private var suggestions: List<String>, private val listener: (String) -> Unit) :
+    RecyclerView.Adapter<FinAiQuestionAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -20,7 +17,8 @@ class FinAiQuestionAdapter(private var suggestions: List<String>) : RecyclerView
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.suggestionTextView.text = suggestions[position]
+        val suggestion = suggestions[position]
+        holder.bind(suggestion)
     }
 
     override fun getItemCount(): Int {
@@ -30,5 +28,22 @@ class FinAiQuestionAdapter(private var suggestions: List<String>) : RecyclerView
     fun updateSuggestions(newSuggestions: List<String>) {
         suggestions = newSuggestions
         notifyDataSetChanged()
+    }
+
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val suggestionTextView: TextView = itemView.findViewById(R.id.tv_ai_suggestion)
+
+        init {
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    listener(suggestions[position])
+                }
+            }
+        }
+
+        fun bind(suggestion: String) {
+            suggestionTextView.text = suggestion
+        }
     }
 }

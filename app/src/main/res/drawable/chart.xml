@@ -1,34 +1,4 @@
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="35dp"
-    android:height="33dp"
-    android:viewportWidth="35"
-    android:viewportHeight="33">
-  <path
-      android:pathData="M2.917,30.25H32.083"
-      android:strokeLineJoin="round"
-      android:strokeWidth="1.5"
-      android:fillColor="#00000000"
-      android:strokeColor="#292D32"
-      android:strokeLineCap="round"/>
-  <path
-      android:pathData="M14.219,5.5V30.25H20.781V5.5C20.781,3.987 20.125,2.75 18.156,2.75H16.844C14.875,2.75 14.219,3.987 14.219,5.5Z"
-      android:strokeLineJoin="round"
-      android:strokeWidth="1.5"
-      android:fillColor="#00000000"
-      android:strokeColor="#292D32"
-      android:strokeLineCap="round"/>
-  <path
-      android:pathData="M4.375,13.75V30.25H10.208V13.75C10.208,12.238 9.625,11 7.875,11H6.708C4.958,11 4.375,12.238 4.375,13.75Z"
-      android:strokeLineJoin="round"
-      android:strokeWidth="1.5"
-      android:fillColor="#00000000"
-      android:strokeColor="#292D32"
-      android:strokeLineCap="round"/>
-  <path
-      android:pathData="M24.792,20.625V30.25H30.625V20.625C30.625,19.112 30.042,17.875 28.292,17.875H27.125C25.375,17.875 24.792,19.112 24.792,20.625Z"
-      android:strokeLineJoin="round"
-      android:strokeWidth="1.5"
-      android:fillColor="#00000000"
-      android:strokeColor="#292D32"
-      android:strokeLineCap="round"/>
+<vector android:height="35dp" android:viewportHeight="25"
+    android:viewportWidth="25" android:width="35dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#000000" android:pathData="M5.114,8.857C4.759,9.07 4.644,9.531 4.857,9.886C5.07,10.241 5.531,10.356 5.886,10.143L5.114,8.857ZM10.5,6.5L10.95,5.9C10.706,5.717 10.376,5.7 10.114,5.857L10.5,6.5ZM14.5,9.5L14.05,10.1C14.324,10.305 14.701,10.299 14.969,10.086L14.5,9.5ZM19.969,6.086C20.292,5.827 20.344,5.355 20.086,5.031C19.827,4.708 19.355,4.656 19.031,4.914L19.969,6.086ZM17.75,19.5C17.75,19.914 18.086,20.25 18.5,20.25C18.914,20.25 19.25,19.914 19.25,19.5L17.75,19.5ZM19.25,11.5C19.25,11.086 18.914,10.75 18.5,10.75C18.086,10.75 17.75,11.086 17.75,11.5L19.25,11.5ZM9.75,19.5C9.75,19.914 10.086,20.25 10.5,20.25C10.914,20.25 11.25,19.914 11.25,19.5L9.75,19.5ZM11.25,11.5C11.25,11.086 10.914,10.75 10.5,10.75C10.086,10.75 9.75,11.086 9.75,11.5L11.25,11.5ZM13.75,19.5C13.75,19.914 14.086,20.25 14.5,20.25C14.914,20.25 15.25,19.914 15.25,19.5L13.75,19.5ZM15.25,14.5C15.25,14.086 14.914,13.75 14.5,13.75C14.086,13.75 13.75,14.086 13.75,14.5L15.25,14.5ZM5.75,19.5C5.75,19.914 6.086,20.25 6.5,20.25C6.914,20.25 7.25,19.914 7.25,19.5L5.75,19.5ZM7.25,14.5C7.25,14.086 6.914,13.75 6.5,13.75C6.086,13.75 5.75,14.086 5.75,14.5L7.25,14.5ZM5.886,10.143L10.886,7.143L10.114,5.857L5.114,8.857L5.886,10.143ZM10.05,7.1L14.05,10.1L14.95,8.9L10.95,5.9L10.05,7.1ZM14.969,10.086L19.969,6.086L19.031,4.914L14.031,8.914L14.969,10.086ZM19.25,19.5L19.25,11.5L17.75,11.5L17.75,19.5L19.25,19.5ZM11.25,19.5L11.25,11.5L9.75,11.5L9.75,19.5L11.25,19.5ZM15.25,19.5L15.25,14.5L13.75,14.5L13.75,19.5L15.25,19.5ZM7.25,19.5L7.25,14.5L5.75,14.5L5.75,19.5L7.25,19.5Z"/>
 </vector>

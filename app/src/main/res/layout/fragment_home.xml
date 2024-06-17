@@ -108,6 +108,7 @@
                 android:id="@+id/ib_track_finance"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:src="@drawable/track_finance"
                 android:background="@drawable/image_button_bg"
                 android:contentDescription="Track Finance" />
 

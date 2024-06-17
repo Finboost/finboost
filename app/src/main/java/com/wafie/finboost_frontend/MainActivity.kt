@@ -54,4 +54,10 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.frame_layout, fragment)
             .commit()
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        //directly close the app when click back button
+        finishAffinity()
+    }
 }

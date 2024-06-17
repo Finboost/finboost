@@ -6,4 +6,7 @@
     <color name="seccondary">#C1E0FB</color>
     <color name="grey">#CDCDCD</color>
     <color name="darkerSecondary">#A8CDFB</color>
+    <color name="green">#43A047</color>
+    <color name="red">#F44336</color>
+    <color name="orange">#FF9800</color>
 </resources>

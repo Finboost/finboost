@@ -4,10 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@color/white"
     tools:context=".MainActivity">
-
-
     <FrameLayout
         android:id="@+id/frame_layout"
         android:layout_width="0dp"
@@ -26,6 +24,7 @@
         android:layout_height="wrap_content"
         app:menu="@menu/bottom_nav"
         app:itemIconSize="30dp"
+        app:backgroundTint="@color/white"
         app:itemIconTint="?attr/colorPrimary"
         app:itemTextColor="?attr/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"

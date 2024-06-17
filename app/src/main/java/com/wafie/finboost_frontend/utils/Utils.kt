@@ -1,10 +1,10 @@
 package com.wafie.finboost_frontend.utils
 
 import android.util.Base64
-import com.wafie.finboost_frontend.data.preferences.UserPreference
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.runBlocking
 import org.json.JSONObject
+import java.text.NumberFormat
+import java.util.Locale
+
 object Utils {
 
     fun jwtDecoder(token: String): JSONObject?  {
@@ -35,4 +35,14 @@ object Utils {
         }
     }
 
+    fun rupiahFormatter(amount: String?): String {
+        return try {
+            val amountInt = amount?.toInt() ?: 0
+            val localeID = Locale("in", "ID")
+            val numberFormat = NumberFormat.getCurrencyInstance(localeID)
+            numberFormat.format(amountInt)
+        } catch (e: NumberFormatException) {
+            "Invalid number"
+        }
+    }
 }

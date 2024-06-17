@@ -51,6 +51,9 @@ data class DetailProfile(
 	@field:SerializedName("educationId")
 	val educationId: Any? = null,
 
+	@field:SerializedName("about")
+	val about: String? = null,
+
 	@field:SerializedName("certifiedStatus")
 	val certifiedStatus: Any? = null,
 
@@ -68,6 +71,21 @@ data class DetailProfile(
 
 	@field:SerializedName("workId")
 	val workId: Any? = null,
+
+	@field: SerializedName("investment")
+	val investment: String? = null,
+
+	@field: SerializedName("insurance")
+	val insurance: String? = null,
+
+	@field: SerializedName("totalSaving")
+	val totalSaving: Int? = null,
+
+	@field: SerializedName("incomePerMonth")
+	val incomePerMonth: Int? = null,
+
+	@field: SerializedName("totalDebt")
+	val totalDebt: Int? = null
 
 )
 

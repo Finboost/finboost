@@ -7,17 +7,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.wafie.finboost_frontend.R
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+
 import com.wafie.finboost_frontend.data.preferences.UserPreference
 import com.wafie.finboost_frontend.data.preferences.dataStore
 import com.wafie.finboost_frontend.databinding.FragmentDetailExpertProfileBinding
 import com.wafie.finboost_frontend.ui.chat.expert.ChatRoom
+import com.wafie.finboost_frontend.ui.home.viewmodel.ExpertViewModel
+import com.wafie.finboost_frontend.ui.home.viewmodel.ExpertViewModelFactory
 import com.wafie.finboost_frontend.utils.Utils
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
 class ExpertProfileDetailFragment : Fragment() {
 
+    private lateinit var expertViewModel: ExpertViewModel
     private var _binding: FragmentDetailExpertProfileBinding? = null
     private val binding get() = _binding!!
 
@@ -31,12 +36,33 @@ class ExpertProfileDetailFragment : Fragment() {
         _binding = FragmentDetailExpertProfileBinding.inflate(inflater, container, false)
 
         userPreference = UserPreference(requireContext().dataStore)
+        return binding.root
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        expertViewModel = ViewModelProvider(this,
+            ExpertViewModelFactory(userPreference))[ExpertViewModel::class.java]
+
+
         expertId = activity?.intent?.getStringExtra("EXTRA_EXPERT") ?: ""
 
-
-        Log.d("ExpertDetail", "expertId: $expertId")
         navigateToChatRoom()
-        return binding.root
+        val fullName = arguments?.getString("EXTRA_FULLNAME")
+
+        expertId.let {
+            expertViewModel.getExpertById(it)
+            expertViewModel.selectedExpertById.observe(viewLifecycleOwner, Observer { expert ->
+                if(expert != null) {
+                    Log.d("ExpertDetail", "Full Name: ${expert.fullName}, Profile: ${expert.profile?.avatar}")
+                    binding.tvDescExpert.text = expert.profile?.about
+                    binding.tvAbout.setText("Tentang ${expert.fullName}")
+                }
+            })
+        }
+
     }
 
     private fun navigateToChatRoom() {
@@ -53,11 +79,5 @@ class ExpertProfileDetailFragment : Fragment() {
 
             Log.d("UserId", "userId: $userId")
         }
-    }
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val fullName = arguments?.getString("EXTRA_FULLNAME")
-
     }
 }

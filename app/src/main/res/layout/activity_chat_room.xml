@@ -82,7 +82,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="15dp"
                     android:background="@null"
-                    android:src="@drawable/arrow_up" />
+                    android:src="@drawable/send_btn" />
             </RelativeLayout>
 
         </com.google.android.material.textfield.TextInputLayout>

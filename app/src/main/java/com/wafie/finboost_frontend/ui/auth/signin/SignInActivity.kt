@@ -8,7 +8,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.wafie.finboost_frontend.MainActivity
-import com.wafie.finboost_frontend.R
 import com.wafie.finboost_frontend.data.preferences.UserPreference
 import com.wafie.finboost_frontend.data.preferences.dataStore
 import com.wafie.finboost_frontend.databinding.ActivitySignInBinding
@@ -57,7 +56,7 @@ class SignInActivity : AppCompatActivity() {
                         }
                         .show()
 
-
+                    binding.progressBar.visibility = View.GONE
                 } else {
                     Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
                 }

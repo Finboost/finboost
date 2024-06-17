@@ -19,4 +19,9 @@
         android:name="com.wafie.finboost_frontend.ui.onboarding.OnboardingFragment"
         android:label="fragment_onboarding"
         tools:layout="@layout/fragment_onboarding" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.wafie.finboost_frontend.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

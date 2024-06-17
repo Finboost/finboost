@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.wafie.finboost_frontend.data.api.response.chat.FinAiResponse
+import com.wafie.finboost_frontend.data.api.response.finai.FinAiResponse
 import com.wafie.finboost_frontend.data.api.retrofit.ApiConfig
 import com.wafie.finboost_frontend.data.preferences.UserPreference
 import kotlinx.coroutines.flow.first
@@ -25,6 +25,9 @@ class FinAiViewModel(private val userPreference: UserPreference) : ViewModel() {
 
     private val _aiAnswer = MutableLiveData<String>()
     val aiAnswer: LiveData<String> = _aiAnswer
+
+    private val _aiSuggestion = MutableLiveData<List<String>>()
+    val aiSuggestion: LiveData<List<String>> = _aiSuggestion
 
     fun sendQuestion(question: String) {
         _question.value = question
@@ -52,6 +55,29 @@ class FinAiViewModel(private val userPreference: UserPreference) : ViewModel() {
             })
         }
     }
+
+    fun aiSuggestion(totalQuestion: Int, userInput: String) {
+        viewModelScope.launch {
+            val token = runBlocking { userPreference.getSession().first().accessToken }
+            val client = ApiConfig.getApiService().getAiQuestionSuggestion("Bearer $token", totalQuestion, userInput)
+            client.enqueue(object : Callback<FinAiResponse> {
+                override fun onResponse(call: Call<FinAiResponse>, response: Response<FinAiResponse>) {
+                    if (response.isSuccessful) {
+                        response.body()?.data?.suggestedQuestions?.let { suggestions ->
+                            _aiSuggestion.value = suggestions
+                        }
+                    } else if (response.code() == 403) {
+                        _error.value = "Failed to get suggestions"
+                    }
+                }
+
+                override fun onFailure(call: Call<FinAiResponse>, t: Throwable) {
+                    _error.value = t.message
+                }
+            })
+        }
+    }
+
 
     companion object {
         private const val TAG = "FinAiViewModel"

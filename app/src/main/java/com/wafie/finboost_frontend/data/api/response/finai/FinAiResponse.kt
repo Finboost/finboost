@@ -1,4 +1,4 @@
-package com.wafie.finboost_frontend.data.api.response.chat
+package com.wafie.finboost_frontend.data.api.response.finai
 
 import com.google.gson.annotations.SerializedName
 
@@ -16,6 +16,9 @@ data class FinAiResponse(
 
 data class Data(
 
-	@field:SerializedName("answer")
+	@field:SerializedName("suggested_questions")
+	val suggestedQuestions: List<String>? = null,
+
+	@field:SerializedName("response")
 	val answer: String? = null
 )

@@ -11,7 +11,7 @@
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_margin="2dp"
-        android:background="@color/white"
+        app:cardBackgroundColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -110,8 +110,6 @@
                 android:textStyle="bold"
                 android:text="@string/lihat_detail_expert"
                 android:textSize="12sp" />
-
-
 
         </LinearLayout>
 

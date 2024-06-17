@@ -5,16 +5,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.wafie.finboost_frontend.data.api.response.auth.SignUpResponse
 import com.wafie.finboost_frontend.data.api.response.users.ExpertDetailResponse
 import com.wafie.finboost_frontend.data.api.response.users.User
 import com.wafie.finboost_frontend.data.api.response.users.UserResponse
 import com.wafie.finboost_frontend.data.api.response.users.UsersItem
 import com.wafie.finboost_frontend.data.api.retrofit.ApiConfig
 import com.wafie.finboost_frontend.data.preferences.UserPreference
-import com.wafie.finboost_frontend.ui.auth.signup.viewmodel.SignUpViewModel
-import com.wafie.finboost_frontend.ui.chat.finAi.viewmodel.FinAiViewModel
-import com.wafie.finboost_frontend.utils.Utils
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking

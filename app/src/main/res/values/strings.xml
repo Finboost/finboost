@@ -85,4 +85,6 @@
     <string name="jenis_asuransi">Jenis Asuransi</string>
     <string name="income_per_month">Pendapatan Per Bulan</string>
     <string name="unauthorized">Anda belum login, silahkan login</string>
+    <string name="dialog_title">Dialog Title</string>
+    <string name="dialog_message">Dialog Message</string>
 </resources>

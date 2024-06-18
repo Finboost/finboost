@@ -1,16 +1,24 @@
 package com.wafie.finboost_frontend.ui.auth.signup
 
 
+import android.app.Dialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.util.DisplayMetrics
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import com.wafie.finboost_frontend.MainActivity
+import com.wafie.finboost_frontend.R
 import com.wafie.finboost_frontend.databinding.ActivitySignUpBinding
+import com.wafie.finboost_frontend.databinding.CustomErrorDialogBinding
+import com.wafie.finboost_frontend.databinding.CustomSuccessDialogBinding
+import com.wafie.finboost_frontend.ui.auth.signin.SignInActivity
 import com.wafie.finboost_frontend.ui.auth.signup.viewmodel.SignUpViewModel
 import com.wafie.finboost_frontend.ui.viewmodel.RolesViewModel
 import kotlinx.coroutines.launch
@@ -27,13 +35,13 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val genders = listOf("Laki_laki", "Perempuan")
-        val genderAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, genders)
+        val genderAdapter = ArrayAdapter(this, R.layout.custom_dropdown_item, genders)
         binding.genderAutocomplete.setAdapter(genderAdapter)
 
         roleViewModel.roles.observe(this, Observer { roles ->
             val roleNames = roles.map { it.name ?: "Unknown" }
             val roleId = roles.map { it.id?: "" }
-            val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, roleNames)
+            val adapter = ArrayAdapter(this, R.layout.custom_dropdown_item, roleNames)
             binding.roleAutocomplete.setAdapter(adapter)
             binding.roleAutocomplete.setOnItemClickListener { _, _, position, id ->
                 selectedRoleId = roleId[position]
@@ -63,11 +71,6 @@ class SignUpActivity : AppCompatActivity() {
             if (fullName.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() &&
                 phoneNumber.isNotEmpty() && gender.isNotEmpty() && age != null && selectedRoleId != null
             ) {
-                Log.d(
-                    "SignUpActivity",
-                    "Data: $fullName, $email, $password, $phoneNumber, $gender, $selectedRoleId, $age"
-                )
-
                 signUpViewModel.signUp(
                     fullName,
                     email,
@@ -81,10 +84,10 @@ class SignUpActivity : AppCompatActivity() {
                 signUpViewModel.signUpResult.observe(this, Observer { signUpResponse ->
                     signUpResponse?.let {
                         if (it.status == "success") {
-                            Toast.makeText(this, "Sign-up berhasil", Toast.LENGTH_SHORT).show()
+                            showSuccessDialog("Sign-Up Berhasil", "Selamat ${it.fullName}! akun anda berhasil dibuat")
                             clearEditText()
                         } else if(it.status == "fail") {
-                            Toast.makeText(this, "Sign-up gagal: ${it.message}", Toast.LENGTH_SHORT).show()
+                            showErrorDialog("Oops! Sign-up gagal", "Sayang sekali, akun dengan email ${it.email} sudah ada")
                         }
                     }
                 })
@@ -105,4 +108,53 @@ class SignUpActivity : AppCompatActivity() {
         binding.edtPhone.setText("")
         binding.roleAutocomplete.setText("")
     }
+
+    private fun showSuccessDialog(title: String, message: String) {
+        val dialogBinding = CustomSuccessDialogBinding.inflate(layoutInflater)
+        val dialog = Dialog(this)
+        dialog.setContentView(dialogBinding.root)
+
+        dialogBinding.tvDialogTitle.text = title
+        dialogBinding.tvDialogMessage.text = message
+
+        dialogBinding.btnOk.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+            dialog.dismiss()
+        }
+
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        val width = (displayMetrics.widthPixels * 0.9).toInt()
+        dialog.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
+        dialog.show()
+    }
+
+    private fun showErrorDialog(title: String, message: String) {
+        val dialogBinding = CustomErrorDialogBinding.inflate(layoutInflater)
+        val dialog = Dialog(this)
+        dialog.setContentView(dialogBinding.root)
+
+        dialogBinding.tvDialogTitle.text = title
+        dialogBinding.tvDialogMessage.text = message
+
+        dialogBinding.btnOk.setOnClickListener {
+            val intent = Intent(this, SignInActivity::class.java)
+            startActivity(intent)
+            finish()
+            dialog.dismiss()
+        }
+
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        val width = (displayMetrics.widthPixels * 0.9).toInt()
+        dialog.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
+        dialog.show()
+    }
+
 }

@@ -1,16 +1,20 @@
 package com.wafie.finboost_frontend.ui.auth.signin
 
-import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.wafie.finboost_frontend.MainActivity
 import com.wafie.finboost_frontend.data.preferences.UserPreference
 import com.wafie.finboost_frontend.data.preferences.dataStore
 import com.wafie.finboost_frontend.databinding.ActivitySignInBinding
+import com.wafie.finboost_frontend.databinding.CustomErrorDialogBinding
+import com.wafie.finboost_frontend.databinding.CustomSuccessDialogBinding
 import com.wafie.finboost_frontend.ui.auth.signin.viewmodel.SignInViewModel
 import com.wafie.finboost_frontend.ui.auth.signin.viewmodel.SignInViewModelFactory
 
@@ -47,22 +51,64 @@ class SignInActivity : AppCompatActivity() {
         signInViewModel.signInResult.observe(this) { response ->
             response?.let {
                 if (it.status == "success") {
-                    AlertDialog.Builder(this)
-                        .setTitle("Login Berhasil")
-                        .setMessage("Anda berhasil login.")
-                        .setPositiveButton("OK") { _, _ ->
-                            startActivity(Intent(this@SignInActivity, MainActivity::class.java))
-                            finish()
-                        }
-                        .show()
+                    showSuccessDialog("Yeay! Anda berhasil login", "${it.message}")
 
                     binding.progressBar.visibility = View.GONE
                 } else {
+                    showErrorDialog("Oops! Error", "Email atau password Anda salah, silahkan periksa kembali")
                     Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
                 }
             }
         }
 
+    }
+
+    private fun showSuccessDialog(title: String, message: String) {
+        val dialogBinding = CustomSuccessDialogBinding.inflate(layoutInflater)
+        val dialog = Dialog(this)
+        dialog.setContentView(dialogBinding.root)
+
+        dialogBinding.tvDialogTitle.text = title
+        dialogBinding.tvDialogMessage.text = message
+
+        dialogBinding.btnOk.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+            dialog.dismiss()
+        }
+
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        val width = (displayMetrics.widthPixels * 0.9).toInt()
+        dialog.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
+        dialog.show()
+    }
+
+    private fun showErrorDialog(title: String, message: String) {
+        val dialogBinding = CustomErrorDialogBinding.inflate(layoutInflater)
+        val dialog = Dialog(this)
+        dialog.setContentView(dialogBinding.root)
+
+        dialogBinding.tvDialogTitle.text = title
+        dialogBinding.tvDialogMessage.text = message
+
+        dialogBinding.btnOk.setOnClickListener {
+            val intent = Intent(this, SignInActivity::class.java)
+            startActivity(intent)
+            finish()
+            dialog.dismiss()
+        }
+
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        val width = (displayMetrics.widthPixels * 0.9).toInt()
+        dialog.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
+        dialog.show()
     }
 
     private fun showLoading(isLoading: Boolean) {

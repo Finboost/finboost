@@ -43,7 +43,9 @@ class PersonalDataActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
-
+        binding.topAppBar.setNavigationOnClickListener {
+            onBackPressed()
+        }
         onBackPress()
     }
 
@@ -75,8 +77,5 @@ class PersonalDataActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
-        binding.topAppBar.setNavigationOnClickListener {
-            onBackPressed()
-        }
     }
 }

@@ -19,6 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
+            android:fontFamily="@font/opensans_sb"
             android:textSize="20sp"
             android:text="@string/about"
             />
@@ -26,7 +27,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal"
             >
             <ImageView
@@ -34,21 +36,40 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/teacher"
                 />
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pendidikan"
-                android:layout_gravity="center"
-                android:layout_marginStart="10dp"
-                android:textStyle="bold"
-                android:textSize="15sp"
-                />
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/education"
+                    android:fontFamily="@font/opensans_sb"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    />
+                <TextView
+                    android:id="@+id/tv_edu_history"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/riwayat_pendidikan"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15sp"
+                    />
+            </LinearLayout>
+
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             android:orientation="horizontal"
             >
             <ImageView
@@ -59,17 +80,19 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="CFP Certified"
+                android:text="@string/certified"
+                android:fontFamily="@font/opensans_sb"
                 android:layout_gravity="center"
                 android:layout_marginStart="10dp"
                 android:textStyle="bold"
-                android:textSize="15sp"
+                android:textSize="20sp"
                 />
         </LinearLayout>
 
         <TextView
             android:id="@+id/tvDescExpert"
             android:layout_width="match_parent"
+            android:fontFamily="@font/montserrat_reg"
             android:layout_height="wrap_content"
             android:text="@string/dummy_desc"
             android:layout_marginBottom="20dp"

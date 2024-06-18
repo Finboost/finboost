@@ -5,17 +5,19 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_ai_suggestion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="5dp"
-        android:background="@drawable/text_bg_transparent"
-        android:paddingVertical="25dp"
-        android:paddingHorizontal="10dp"
-        android:maxWidth="200dp"
-        android:text="Apakah Keuangan itu penting?"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tv_ai_suggestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:background="@drawable/text_bg_transparent"
+            android:paddingVertical="20dp"
+            android:paddingHorizontal="10dp"
+            android:maxWidth="250dp"
+            android:text="Apakah Keuangan itu penting?"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

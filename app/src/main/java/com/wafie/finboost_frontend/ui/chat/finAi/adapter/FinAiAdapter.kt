@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.facebook.shimmer.ShimmerFrameLayout
+import com.wafie.finboost_frontend.databinding.ItemAiAnswerShimmerBinding
 import com.wafie.finboost_frontend.databinding.ItemAnswerAiBinding
 import com.wafie.finboost_frontend.databinding.ItemUserQuestionBinding
 
@@ -13,12 +15,14 @@ class FinAiAdapter : ListAdapter<ChatItem, RecyclerView.ViewHolder>(FinAiDiffCal
     companion object {
         private const val VIEW_TYPE_USER_QUESTION = 0
         private const val VIEW_TYPE_AI_ANSWER = 1
+        private const val VIEW_TYPE_SHIMMER = 2
     }
 
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position)) {
             is ChatItem.UserQuestion -> VIEW_TYPE_USER_QUESTION
             is ChatItem.AiAnswer -> VIEW_TYPE_AI_ANSWER
+            is ChatItem.Shimmer -> VIEW_TYPE_SHIMMER
         }
     }
 
@@ -32,6 +36,10 @@ class FinAiAdapter : ListAdapter<ChatItem, RecyclerView.ViewHolder>(FinAiDiffCal
                 val binding = ItemAnswerAiBinding.inflate(LayoutInflater.from(parent.context), parent, false)
                 AiAnswerViewHolder(binding)
             }
+            VIEW_TYPE_SHIMMER -> {
+                val binding = ItemAiAnswerShimmerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                ShimmerViewHolder(binding)
+            }
             else -> throw IllegalArgumentException("Invalid view type")
         }
     }
@@ -40,6 +48,7 @@ class FinAiAdapter : ListAdapter<ChatItem, RecyclerView.ViewHolder>(FinAiDiffCal
         when (holder) {
             is UserQuestionViewHolder -> holder.bind(getItem(position) as ChatItem.UserQuestion)
             is AiAnswerViewHolder -> holder.bind(getItem(position) as ChatItem.AiAnswer)
+            is ShimmerViewHolder -> holder.showShimmer()
         }
     }
 
@@ -52,6 +61,14 @@ class FinAiAdapter : ListAdapter<ChatItem, RecyclerView.ViewHolder>(FinAiDiffCal
     class AiAnswerViewHolder(private val binding: ItemAnswerAiBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(chatItem: ChatItem.AiAnswer) {
             binding.tvAiAnswer.text = chatItem.answer
+        }
+    }
+
+    class ShimmerViewHolder(private val binding: ItemAiAnswerShimmerBinding) : RecyclerView.ViewHolder(binding.root) {
+        private val shimmerLayout: ShimmerFrameLayout = binding.shimmerLayout
+
+        fun showShimmer() {
+            shimmerLayout.startShimmer()
         }
     }
 
@@ -71,4 +88,7 @@ sealed class ChatItem {
 
     data class UserQuestion(val question: String, override val id: String = question) : ChatItem()
     data class AiAnswer(val answer: String, override val id: String = answer) : ChatItem()
+    object Shimmer : ChatItem() {
+        override val id: String = "shimmer"
+    }
 }

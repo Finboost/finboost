@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:maxWidth="250dp"
+        android:fontFamily="@font/montserrat_sb"
         android:padding="10dp"
         android:textStyle="bold"
         android:textSize="20sp"

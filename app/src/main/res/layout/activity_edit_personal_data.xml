@@ -7,7 +7,6 @@
     android:background="@color/white"
     tools:context=".ui.profile.personalData.EditPersonalDataActivity">
 
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/topAppBarLayout"
         android:layout_width="match_parent"
@@ -29,191 +28,233 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="vertical"
-        android:paddingHorizontal="20sp"
-        android:paddingVertical="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topAppBarLayout"
-        >
+        app:layout_constraintBottom_toBottomOf="parent">
 
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:textColor="@color/grey"
-            android:text="Status Pernikahan"
-            />
+            android:orientation="vertical"
+            android:paddingHorizontal="20sp"
+            android:paddingVertical="10dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_field_status"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            app:hintEnabled="false"
-            >
-
-            <AutoCompleteTextView
-                android:id="@+id/autoComplete_status"
-                android:hint="@string/status_pernikahan"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none" />
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/opensans_reg"
+                android:textColor="@color/grey"
+                android:text="@string/deskripsi_diri" />
 
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:textColor="@color/grey"
-            android:text="Pendidikan"
-            />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_field_edu"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            app:hintEnabled="false"
-            >
-
-            <AutoCompleteTextView
-                android:id="@+id/autoComplete_educations"
-                android:hint="@string/education"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_field_about"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none" />
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="25dp"
+                app:hintEnabled="false">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtUserAbout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_med"
+                    android:hint="Tentang dirimu"
+                    android:inputType="text" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:textColor="@color/grey"
-            android:text="Pekerjaan"
-            />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_field_works"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            app:hintEnabled="false"
-            >
-
-            <AutoCompleteTextView
-                android:id="@+id/autoComplete_work"
-                android:hint="@string/work_status"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none" />
+                android:textSize="15sp"
+                android:fontFamily="@font/opensans_reg"
+                android:textStyle="bold"
+                android:textColor="@color/grey"
+                android:text="Status Pernikahan" />
 
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:textColor="@color/grey"
-            android:text="Jenis Investasi"
-            />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_field_user_investment"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            app:hintEnabled="false"
-            >
-
-            <AutoCompleteTextView
-                android:id="@+id/autoComplete_user_investment"
-                android:hint="Jenis Investasi"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_field_status"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none" />
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="25dp"
+                app:hintEnabled="false">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <AutoCompleteTextView
+                    android:id="@+id/autoComplete_status"
+                    android:hint="@string/status_pernikahan"
+                    android:layout_width="match_parent"
+                    android:fontFamily="@font/montserrat_med"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:textColor="@color/grey"
-            android:text="Jenis Inusrance"
-            />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_field_user_insurance"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            app:hintEnabled="false"
-            >
-
-            <AutoCompleteTextView
-                android:id="@+id/autoComplete_user_insurance"
-                android:hint="@string/jenis_asuransi"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none" />
+                android:textSize="15sp"
+                android:fontFamily="@font/opensans_reg"
+                android:textStyle="bold"
+                android:textColor="@color/grey"
+                android:text="Pendidikan" />
 
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:textColor="@color/grey"
-            android:text="Pendapatan Perbulan"
-            />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_field_income"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            app:hintEnabled="false"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtUserIncome"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_field_edu"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/income_per_month"
-                android:inputType="number" />
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="25dp"
+                app:hintEnabled="false">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <AutoCompleteTextView
+                    android:id="@+id/autoComplete_educations"
+                    android:hint="@string/education"
+                    android:layout_width="match_parent"
+                    android:fontFamily="@font/montserrat_med"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
 
-        <Button
-            android:id="@+id/btn_save_changes"
-            android:layout_marginVertical="25dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_filled"
-            android:text="@string/simpan_perubahan"
-            android:textSize="20sp"
-            />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:fontFamily="@font/opensans_reg"
+                android:textStyle="bold"
+                android:textColor="@color/grey"
+                android:text="Pekerjaan" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_field_works"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="25dp"
+                app:hintEnabled="false">
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoComplete_work"
+                    android:hint="@string/work_status"
+                    android:layout_width="match_parent"
+                    android:fontFamily="@font/montserrat_med"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:fontFamily="@font/opensans_reg"
+                android:textStyle="bold"
+                android:textColor="@color/grey"
+                android:text="Jenis Investasi" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_field_user_investment"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="25dp"
+                app:hintEnabled="false">
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoComplete_user_investment"
+                    android:hint="Jenis Investasi"
+                    android:layout_width="match_parent"
+                    android:fontFamily="@font/montserrat_med"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/opensans_reg"
+                android:textColor="@color/grey"
+                android:text="Jenis Inusrance" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_field_user_insurance"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="25dp"
+                app:hintEnabled="false">
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoComplete_user_insurance"
+                    android:hint="@string/jenis_asuransi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_med"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/opensans_reg"
+                android:textColor="@color/grey"
+                android:text="Pendapatan Perbulan" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_field_income"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtUserIncome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_med"
+                    android:hint="@string/income_per_month"
+                    android:inputType="number" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_save_changes"
+                android:layout_marginVertical="25dp"
+                android:layout_width="match_parent"
+                android:fontFamily="@font/opensans_sb"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_filled"
+                android:text="@string/simpan_perubahan"
+                android:textSize="20sp" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -87,4 +87,10 @@
     <string name="unauthorized">Anda belum login, silahkan login</string>
     <string name="dialog_title">Dialog Title</string>
     <string name="dialog_message">Dialog Message</string>
+    <string name="riwayat_pendidikan">Riwayat Pendidikan</string>
+    <string name="financial_expert">Financial Expert</string>
+    <string name="on_board_3">Consult your financial problem with financial expert</string>
+    <string name="deskripsi_diri">Deskripsi Diri</string>
+    <string name="dummy_rp">Rp5000.000</string>
+    <string name="certified">CFP Certified</string>
 </resources>

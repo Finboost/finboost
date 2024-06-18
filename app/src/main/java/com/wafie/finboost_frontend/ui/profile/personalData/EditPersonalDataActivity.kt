@@ -6,12 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Log
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import com.wafie.finboost_frontend.MainActivity
 import com.wafie.finboost_frontend.R
 import com.wafie.finboost_frontend.data.preferences.UserPreference
@@ -37,7 +39,7 @@ enum class TypeofInvestments(val displayName: String) {
     REKSADANA("Reksadana"),
     OBLIGASI("Obligasi"),
     EMAS("Emas"),
-    CRYPTOCURRENCY("Crypto")
+    CRYPTOCURRENCY("Cryptocurrency")
 }
 
 enum class TypeofInsurances(val displayName: String) {
@@ -45,7 +47,7 @@ enum class TypeofInsurances(val displayName: String) {
     REKSADANA("Reksadana"),
     OBLIGASI("Obligasi"),
     EMAS("Emas"),
-    CRYPTOCURRENCY("Crypto")
+    CRYPTOCURRENCY("Cryptocurrency")
 }
 
 class EditPersonalDataActivity : AppCompatActivity() {
@@ -75,6 +77,7 @@ class EditPersonalDataActivity : AppCompatActivity() {
         val userTypeInvestment = intent.getStringExtra("userTypeInvestment")
         val userTypeInsurance = intent.getStringExtra("userTypeInsurance")
         val userIncome = intent.getStringExtra("userIncome")
+        val userAbout = intent.getStringExtra("userAbout")
 
         binding.autoCompleteStatus.setText(userStatus)
         binding.autoCompleteWork.setText(userWork)
@@ -82,6 +85,11 @@ class EditPersonalDataActivity : AppCompatActivity() {
         binding.autoCompleteUserInvestment.setText(userTypeInvestment)
         binding.autoCompleteUserInsurance.setText(userTypeInsurance)
         binding.edtUserIncome.setText(userIncome)
+        binding.edtUserAbout.setText(userAbout)
+
+        viewModel.isLoading.observe(this, Observer {
+            showLoading(it)
+        })
 
         getInvestmentType()
         getInsuranceType()
@@ -99,8 +107,9 @@ class EditPersonalDataActivity : AppCompatActivity() {
 
     private fun editProfile() {
         val userId = intent.getStringExtra("userId")
+
         binding.btnSaveChanges.setOnClickListener {
-            if (userId != null) {
+            if (userId != null && selectedEduId != null && selectedWorkId != null) {
                 viewModel.updateUserProfileById(
                     userId,
                     binding.autoCompleteStatus.text.toString(),
@@ -109,17 +118,17 @@ class EditPersonalDataActivity : AppCompatActivity() {
                     binding.autoCompleteUserInvestment.text.toString(),
                     binding.autoCompleteUserInsurance.text.toString(),
                     binding.edtUserIncome.text.toString(),
-                    onComplete = { isSuccess ->
-                        if (isSuccess) {
-                            showErrorDialog("Update Data Berhasil", "Data diri anda berhasil diperbarui")
+                    binding.edtUserAbout.text.toString()
+                    )
+                viewModel.updatedProfile.observe(this, Observer {profile->
+                    profile?.let {
+                        if(it.status == "success") {
+                            showSuccessDialog("Update Success", "Data anda berhasil diperbarui")
                         } else {
-                            showErrorDialog("Oops! Error", "Terjadi kesalahan, pastikan data yang anda perbarui sudah benar")
+                            showErrorDialog("Oops! Error", "Pastikan data yang di update sudah benar yaa")
                         }
-                    },
-                    onError = { errorMessage ->
-                        // Handle error, e.g., show an error message
                     }
-                )
+                })
             }
         }
     }
@@ -206,8 +215,6 @@ class EditPersonalDataActivity : AppCompatActivity() {
         dialogBinding.tvDialogMessage.text = message
 
         dialogBinding.btnOk.setOnClickListener {
-            val intent = Intent(this, SignInActivity::class.java)
-            startActivity(intent)
             finish()
             dialog.dismiss()
         }
@@ -219,6 +226,11 @@ class EditPersonalDataActivity : AppCompatActivity() {
         val width = (displayMetrics.widthPixels * 0.9).toInt()
         dialog.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
         dialog.show()
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.GONE else View.VISIBLE
+        binding.btnSaveChanges.visibility = if (isLoading) View.VISIBLE else  View.GONE
     }
 
     override fun onBackPressed() {

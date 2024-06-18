@@ -118,7 +118,7 @@ class SignUpActivity : AppCompatActivity() {
         dialogBinding.tvDialogMessage.text = message
 
         dialogBinding.btnOk.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
             finish()
             dialog.dismiss()
@@ -142,7 +142,7 @@ class SignUpActivity : AppCompatActivity() {
         dialogBinding.tvDialogMessage.text = message
 
         dialogBinding.btnOk.setOnClickListener {
-            val intent = Intent(this, SignInActivity::class.java)
+            val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
             finish()
             dialog.dismiss()

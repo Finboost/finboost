@@ -6,5 +6,6 @@ data class ProfileUpdateRequest(
     val workId: String,
     val investment: String,
     val insurance: String,
-    val incomePerMonth: String
+    val incomePerMonth: String,
+    val about: String
 )

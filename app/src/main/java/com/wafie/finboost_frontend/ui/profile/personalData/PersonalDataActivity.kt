@@ -37,9 +37,10 @@ class PersonalDataActivity : AppCompatActivity() {
                 putExtra("userStatus", binding.tvUserStatus.text.toString())
                 putExtra("userWork", binding.tvUserWork.text.toString())
                 putExtra("userEducation", binding.tvUserEducation.text.toString())
-                putExtra("userTypeInvestment", binding.tvUserTypeInvesment.text.toString())
+                putExtra("userTypeInvestment", binding.tvUserTypeInvestment.text.toString())
                 putExtra("userTypeInsurance", binding.tvUserTypeInsurance.text.toString())
                 putExtra("userIncome", binding.tvUserIncome.text.toString())
+                putExtra("userAbout", binding.tvUserAbout.text)
             }
             startActivity(intent)
         }
@@ -64,9 +65,10 @@ class PersonalDataActivity : AppCompatActivity() {
                         tvUserStatus.text = userProfile.maritalStatus
                         tvUserWork.text = userProfile.work?.name
                         tvUserEducation.text = userProfile.education?.name
-                        tvUserTypeInvesment.text = userProfile.investment
+                        tvUserTypeInvestment.text = userProfile.investment
                         tvUserTypeInsurance.text = userProfile.insurance
                         tvUserIncome.text = rupiahFormatter(userProfile.incomePerMonth)
+                        tvUserAbout.text = userProfile.about
                     }
                 }
             })

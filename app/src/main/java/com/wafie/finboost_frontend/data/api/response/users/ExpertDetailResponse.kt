@@ -1,6 +1,7 @@
 package com.wafie.finboost_frontend.data.api.response.users
 
 import com.google.gson.annotations.SerializedName
+import com.wafie.finboost_frontend.data.api.response.profile.Education
 
 data class ExpertDetailResponse(
 
@@ -60,6 +61,9 @@ data class DetailProfile(
 	@field:SerializedName("id")
 	val id: String? = null,
 
+	@field:SerializedName("education")
+	val education: Education? = null,
+
 	@field:SerializedName("avatar")
 	val avatar: String? = null,
 
@@ -87,6 +91,15 @@ data class DetailProfile(
 	@field: SerializedName("totalDebt")
 	val totalDebt: Int? = null
 
+)
+
+data class Education(
+
+	@field:SerializedName("name")
+	val name: String? = null,
+
+	@field:SerializedName("id")
+	val id: String? = null
 )
 
 data class ExpertData(

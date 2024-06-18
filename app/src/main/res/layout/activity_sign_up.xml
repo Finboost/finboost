@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:padding="20dp"
+        android:fontFamily="@font/opensans_med"
         android:text="@string/sign_up_title"
         android:textColor="@color/white"
         android:textSize="30sp"
@@ -42,6 +43,7 @@
                 android:id="@+id/edtFullName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_med"
                 android:hint="@string/nama_lengkap"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
@@ -61,6 +63,7 @@
                 android:hint="@string/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_med"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
                 android:inputType="textEmailAddress" />
@@ -79,6 +82,7 @@
                 android:id="@+id/edtPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_med"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
                 android:hint="@string/no_handphone"
@@ -99,6 +103,7 @@
             <AutoCompleteTextView
                 android:id="@+id/gender_autocomplete"
                 android:hint="@string/gender"
+                android:fontFamily="@font/montserrat_med"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none" />
@@ -118,6 +123,7 @@
             <AutoCompleteTextView
                 android:id="@+id/role_autocomplete"
                 android:layout_width="match_parent"
+                android:fontFamily="@font/montserrat_med"
                 android:hint="@string/role"
                 android:layout_height="wrap_content"
                 android:inputType="none" />
@@ -137,6 +143,7 @@
                 android:id="@+id/edtAge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_med"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
                 android:hint="@string/umur"
@@ -150,6 +157,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="5dp"
+
             app:hintEnabled="false"
             app:endIconMode="password_toggle">
 
@@ -158,6 +166,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
+                android:fontFamily="@font/montserrat_med"
                 android:layout_marginEnd="30dp"
                 android:inputType="textPassword"
                 android:hint="@string/passowrd"
@@ -174,7 +183,8 @@
 
             <Button
                 android:id="@+id/btn_signup"
-                android:layout_width="348dp"
+                android:layout_width="330dp"
+                android:fontFamily="@font/montserrat_med"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_filled"
                 android:text="@string/sign_up"

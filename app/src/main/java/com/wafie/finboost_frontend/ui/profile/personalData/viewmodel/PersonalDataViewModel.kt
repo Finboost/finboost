@@ -11,6 +11,7 @@ import com.wafie.finboost_frontend.data.api.retrofit.ApiConfig
 import com.wafie.finboost_frontend.data.model.ProfileUpdateRequest
 import com.wafie.finboost_frontend.utils.Utils.convertFileToMultipart
 import com.wafie.finboost_frontend.data.preferences.UserPreference
+import com.wafie.finboost_frontend.ui.auth.signup.viewmodel.SignUpViewModel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -32,6 +33,12 @@ class PersonalDataViewModel(private val userPreference: UserPreference) : ViewMo
 
     private val _userProfileById = MutableLiveData<Profile?>()
     val userProfileById: LiveData<Profile?> = _userProfileById
+
+    private val _updatedProfile = MutableLiveData<ProfileResponse?>()
+    val updatedProfile: LiveData<ProfileResponse?> = _updatedProfile
+
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
 
     fun getUserProfileById(userId: String) {
         viewModelScope.launch {
@@ -65,10 +72,10 @@ class PersonalDataViewModel(private val userPreference: UserPreference) : ViewMo
         investment: String,
         insurance: String,
         incomePerMonth: String,
-        onComplete: (Boolean) -> Unit,
-        onError: (String) -> Unit
+        about: String
     ) {
         viewModelScope.launch {
+
             try {
                 val token = userPreference.getSession().first().accessToken
                 val call = ApiConfig.getApiService().updateUserProfile(
@@ -80,25 +87,29 @@ class PersonalDataViewModel(private val userPreference: UserPreference) : ViewMo
                         workId,
                         investment,
                         insurance,
-                        incomePerMonth
+                        incomePerMonth,
+                        about
                     )
                 )
-
+                _isLoading.value = false
                 call.enqueue(object : Callback<ProfileResponse> {
                     override fun onResponse(call: Call<ProfileResponse>, response: Response<ProfileResponse>) {
                         if (response.isSuccessful) {
-                            onComplete(true)
+                            _updatedProfile.value = response.body()
                         } else {
-                            onError(response.errorBody()?.string() ?: "Unknown error")
+                            _updatedProfile.value = null
+                            _updatedProfile.value = ProfileResponse(status = "fail", message = response.errorBody()?.string())
+                            Log.e(TAG, "Error response code: ${response.code()}")
+                            Log.e(TAG, "Error response message: ${response.errorBody()?.string()}")
                         }
                     }
 
                     override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
-                        onError(t.message ?: "Unknown error")
+                        Log.e(TAG, "API call failed: ${t.message}", t)
                     }
                 })
             } catch (e: Exception) {
-                onError(e.message ?: "Unknown error")
+                Log.e(TAG, "Andorid Execption Error: ${e.message}", e)
             }
         }
     }

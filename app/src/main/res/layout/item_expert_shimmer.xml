@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:shimmer_duration="1000">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            app:cardBackgroundColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Media -->
+                <ImageView
+                    android:id="@+id/iv_expert_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:background="@color/grey"
+                    android:contentDescription="@string/profile_expert"
+                    android:scaleType="centerCrop"
+                     />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingVertical="10dp"
+                    android:paddingHorizontal="13dp"
+                    >
+
+                    <!-- Title, secondary and supporting text -->
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="20dp"
+                        android:background="@color/grey"
+                        android:maxWidth="200dp" />
+                    <TextView
+                        android:layout_width="170dp"
+                        android:layout_height="20dp"
+                        android:layout_marginVertical="10dp"
+                        android:background="@color/grey"
+                        android:maxWidth="200dp" />
+
+                </LinearLayout>
+
+                <com.google.android.flexbox.FlexboxLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="13dp"
+
+                    app:flexWrap="wrap">
+
+                    <TextView
+                        android:layout_width="55dp"
+                        android:layout_height="20dp"
+                        android:background="@color/grey"
+                        android:padding="2dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/main"
+                        />
+
+                    <TextView
+                        android:layout_width="55dp"
+                        android:layout_height="20dp"
+                        android:background="@color/grey"
+                        android:padding="2dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/main"
+                        />
+
+                    <TextView
+                        android:layout_width="55dp"
+                        android:layout_height="20dp"
+                        android:background="@color/grey"
+                        android:padding="2dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/main"
+                         />
+
+                    <TextView
+                        android:layout_width="55dp"
+                        android:layout_height="20dp"
+                        android:background="@color/grey"
+                        android:padding="2dp"
+                        android:layout_marginStart="8dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/main"
+                        />
+                </com.google.android.flexbox.FlexboxLayout>
+
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="20dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@color/grey"
+                    android:layout_marginHorizontal="10dp"
+                    android:maxWidth="200dp" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

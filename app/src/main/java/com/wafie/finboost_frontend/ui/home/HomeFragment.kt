@@ -51,6 +51,7 @@ class HomeFragment : Fragment() {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = expertAdapter
         }
+        expertAdapter.submitList(List(5) { null })
         expertViewModel.getListUser("Expert")
 
         expertViewModel.expertList.observe(viewLifecycleOwner, Observer { expertList ->

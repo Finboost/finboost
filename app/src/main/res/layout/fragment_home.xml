@@ -35,6 +35,7 @@
         android:paddingHorizontal="15dp"
         android:textSize="23sp"
         android:textStyle="bold"
+        android:fontFamily="@font/montserrat_sb"
         android:text="@string/home_title_content"
         android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/topAppBarLayout" />
@@ -68,6 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Fin Ai"
+                android:fontFamily="@font/opensans_sb"
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 android:layout_marginTop="5dp" />
@@ -91,7 +93,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Analytics"
+                android:text="Analisa"
+                android:fontFamily="@font/opensans_sb"
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 android:layout_marginTop="5dp" />
@@ -116,6 +119,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Track Finance"
+                android:gravity="center"
+                android:fontFamily="@font/opensans_sb"
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 android:layout_marginTop="5dp" />
@@ -140,6 +145,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Article"
+                android:fontFamily="@font/opensans_sb"
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 android:layout_marginTop="5dp" />
@@ -161,8 +167,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Financial Expert"
+            android:text="@string/financial_expert"
             android:textSize="30sp"
+            android:fontFamily="@font/montserrat_sb"
             android:textStyle="bold"
             android:textColor="@color/black"
             />

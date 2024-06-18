@@ -11,6 +11,7 @@
         android:id="@+id/textViewUserQuestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_med"
         android:background="@drawable/rounded_message_blue"
         android:padding="8dp"
         android:textAlignment="textStart"

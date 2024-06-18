@@ -38,6 +38,7 @@ class FinAiChat : AppCompatActivity() {
 
             val currentList = chatAdapter.currentList.toMutableList()
             currentList.add(ChatItem.UserQuestion(question))
+            currentList.add(ChatItem.Shimmer) // Tambahkan item shimmer
             chatAdapter.submitList(currentList)
 
             // Clear input text after send question
@@ -55,6 +56,7 @@ class FinAiChat : AppCompatActivity() {
 
                 val currentList = chatAdapter.currentList.toMutableList()
                 currentList.add(ChatItem.UserQuestion(message))
+                currentList.add(ChatItem.Shimmer) // Tambahkan item shimmer
                 chatAdapter.submitList(currentList)
 
                 binding.edtChatAi.text!!.clear()
@@ -62,7 +64,7 @@ class FinAiChat : AppCompatActivity() {
         }
 
         viewModel.aiAnswer.observe(this, Observer { aiAnswer ->
-            val currentList = chatAdapter.currentList.toMutableList()
+            val currentList = chatAdapter.currentList.filterNot { it is ChatItem.Shimmer }.toMutableList()
             currentList.add(ChatItem.AiAnswer(aiAnswer))
             chatAdapter.submitList(currentList)
         })
@@ -71,14 +73,11 @@ class FinAiChat : AppCompatActivity() {
             aiSuggestedQuetionAdapter.updateSuggestions(suggestions)
         })
 
-
         viewModel.aiSuggestion(5, "-")
-
 
         viewModel.error.observe(this, Observer { error ->
             // Handle error
         })
-
 
         setSupportActionBar(binding.topAppBar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

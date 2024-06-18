@@ -59,6 +59,7 @@ class ExpertProfileDetailFragment : Fragment() {
                     Log.d("ExpertDetail", "Full Name: ${expert.fullName}, Profile: ${expert.profile?.avatar}")
                     binding.tvDescExpert.text = expert.profile?.about
                     binding.tvAbout.setText("Tentang ${expert.fullName}")
+                    binding.tvEduHistory.text = expert.profile?.education?.name
                 }
             })
         }

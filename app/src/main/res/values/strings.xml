@@ -21,7 +21,6 @@
     <string name="no_handphone">No Handphone</string>
     <string name="umur">Umur</string>
     <string name="home_title_content">RAIH FINANCIAL GROWTH \nDENGAN LAYANAN KAMI</string>
-    <string name="no_account">Belum Punya akun? Sign Up</string>
     <string name="sign_in_with_google">Sign In With Google</string>
     <string name="dumy_detail_text">Wafie Abiyya El Hanief, CFP, ChFC</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -93,4 +92,9 @@
     <string name="deskripsi_diri">Deskripsi Diri</string>
     <string name="dummy_rp">Rp5000.000</string>
     <string name="certified">CFP Certified</string>
+    <string name="no_account">Belum punya akun?</string>
+    <string name="regis">registrasi</string>
+    <string name="has_account">Sudah punya akun?</string>
+    <string name="privacy">Kebijakan Privasi ini mengatur cara FinBoost mengumpulkan, menggunakan, memelihara, dan mengungkapkan informasi identitas pribadi yang dikumpulkan dari pengguna situs web FinBoost yang berlokasi di www.finboost.com (Situs) termasuk Aplikasi Seluler FinBoost yang terdaftar di App Store dan Google Play Store, atau dikumpulkan melalui layanan jejaring sosial kami (bersama dengan Situs, Layanan). Dengan mengakses dan/atau menggunakan layanan FinBoost, Pengguna menyatakan bahwa setiap data Pengguna adalah sah, dan Pengguna menyetujui FinBoost untuk memperoleh, mengumpulkan, menyimpan, mengelola dan menggunakan data tersebut sebagaimana tercantum dalam Kebijakan Privasi dan Syarat dan Ketentuan FinBoost.FinBoost dari waktu ke waktu berhak memperbaharui Kebijakan Privasi ini agar tetap relevan dan terkini dengan perubahan teknologi, hukum yang berlaku, inovasi FinBoost yang terus berkembang dan kebutuhan Pengguna, dan sebaiknya Anda memeriksa halaman ini secara berkala untuk memastikan Anda sudah mengetahui perubahan apa pun.
+        FinBoost melindungi seluruh informasi yang diberikan Pengguna pada saat Pengguna menggunakan seluruh Layanan.</string>
 </resources>

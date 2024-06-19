@@ -26,6 +26,8 @@ import com.wafie.finboost_frontend.ui.WelcomeActivity
 import com.wafie.finboost_frontend.ui.profile.personalData.PersonalDataActivity
 import com.wafie.finboost_frontend.ui.profile.personalData.viewmodel.PersonalDataViewModel
 import com.wafie.finboost_frontend.ui.profile.personalData.viewmodel.PersonalDataViewModelFactory
+import com.wafie.finboost_frontend.ui.profile.privacy.ProfilePrivacy
+import com.wafie.finboost_frontend.ui.profile.settings.SettingsActivity
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import com.wafie.finboost_frontend.utils.Utils.rupiahFormatter
@@ -37,7 +39,6 @@ class ProfileFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var userPreference: UserPreference
     private lateinit var viewModel: PersonalDataViewModel
-    private val PICK_IMAGE_REQUEST = 1
     private lateinit var userId: String
 
     override fun onCreateView(
@@ -91,8 +92,20 @@ class ProfileFragment : Fragment() {
         }
 
         //navigate to 'Data Pribadi'
-        binding.tvUserPersonal.setOnClickListener {
+        binding.clUser.setOnClickListener {
             val intent = Intent(requireContext(), PersonalDataActivity::class.java)
+            startActivity(intent)
+        }
+
+        //navigate to 'Privacy'
+        binding.clPrivacy.setOnClickListener {
+            val intent = Intent(requireContext(), ProfilePrivacy::class.java)
+            startActivity(intent)
+        }
+
+        //navigate to 'Settings'
+        binding.clSetting.setOnClickListener {
+            val intent = Intent(requireContext(), SettingsActivity::class.java)
             startActivity(intent)
         }
     }

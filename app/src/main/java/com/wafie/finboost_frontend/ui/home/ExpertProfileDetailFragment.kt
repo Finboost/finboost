@@ -28,6 +28,8 @@ class ExpertProfileDetailFragment : Fragment() {
 
     private lateinit var userPreference: UserPreference
     private lateinit var expertId: String
+    private lateinit var expertName: String
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,34 +41,31 @@ class ExpertProfileDetailFragment : Fragment() {
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         expertViewModel = ViewModelProvider(this,
             ExpertViewModelFactory(userPreference))[ExpertViewModel::class.java]
 
-
         expertId = activity?.intent?.getStringExtra("EXTRA_EXPERT") ?: ""
 
-        navigateToChatRoom()
-        val fullName = arguments?.getString("EXTRA_FULLNAME")
+        expertName = activity?.intent?.getStringExtra("EXPERT_NAME") ?: ""
+        navigateToChatRoom(expertName)
 
         expertId.let {
             expertViewModel.getExpertById(it)
             expertViewModel.selectedExpertById.observe(viewLifecycleOwner, Observer { expert ->
-                if(expert != null) {
+                if (expert != null) {
                     Log.d("ExpertDetail", "Full Name: ${expert.fullName}, Profile: ${expert.profile?.avatar}")
                     binding.tvDescExpert.text = expert.profile?.about
-                    binding.tvAbout.setText("Tentang ${expert.fullName}")
+                    binding.tvAbout.text = "Tentang ${expert.fullName}"
                     binding.tvEduHistory.text = expert.profile?.education?.name
                 }
             })
         }
-
     }
 
-    private fun navigateToChatRoom() {
+    private fun navigateToChatRoom(expertName: String?) {
         binding.btnConsult.setOnClickListener {
             val token = runBlocking { userPreference.getSession().first().accessToken }
             val decodedJwt = Utils.jwtDecoder(token)
@@ -76,9 +75,10 @@ class ExpertProfileDetailFragment : Fragment() {
             val intent = Intent(activity, ChatRoom::class.java)
 
             intent.putExtra("CHAT_ROOM_ID", chatRoomId)
+            intent.putExtra("EXPERT_NAME", expertName)
             startActivity(intent)
 
-            Log.d("UserId", "userId: $userId")
+            Log.d("NavigateToChatRoom", "Navigating to ChatRoom with Expert Name: $expertName")
         }
     }
 }

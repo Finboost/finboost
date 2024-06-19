@@ -198,12 +198,31 @@
                 android:visibility="gone" />
         </FrameLayout>
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
-            android:text="Sudah punya akun? Sign In " />
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="@font/montserrat_sb"
+                android:text="@string/has_account"/>
+            <TextView
+                android:id="@+id/tv_sign_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/main"
+                android:fontFamily="@font/montserrat_sb"
+                android:textStyle="bold"
+                android:text="@string/sign_in"/>
+
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -67,6 +67,7 @@ class ExpertAdapter : ListAdapter<UsersItem, RecyclerView.ViewHolder>(DIFF_CALLB
             holder.itemView.setOnClickListener {
                 val intent = Intent(holder.itemView.context, ExpertDetailActivity::class.java)
                 intent.putExtra("EXTRA_EXPERT", expert.id)
+                intent.putExtra("EXPERT_NAME", expert.fullName)
                 holder.itemView.context.startActivity(intent)
             }
         }

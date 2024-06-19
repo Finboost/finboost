@@ -73,6 +73,7 @@ dependencies {
     implementation ("com.google.android.flexbox:flexbox:3.0.0")
     implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation ("com.firebaseui:firebase-ui-database:8.0.0")
+    implementation ("com.codesgood:justifiedtextview:1.1.0")
 
     //shimmer effect lib
     implementation ("com.facebook.shimmer:shimmer:0.5.0")

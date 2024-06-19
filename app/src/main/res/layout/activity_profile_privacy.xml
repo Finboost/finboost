@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="20dp"
+    tools:context=".ui.profile.privacy.ProfilePrivacy">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/topAppBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            app:navigationIcon="@drawable/arrow_back"
+            app:title="Privasi"
+            app:titleCentered="true"
+            app:titleTextColor="@color/black" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.codesgood.views.JustifiedTextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="7dp"
+        android:fontFamily="@font/opensans_reg"
+        android:lineSpacingMultiplier="0.8"
+        android:text="Kebijakan Privasi ini mengatur cara FinBoost mengumpulkan, menggunakan, memelihara, dan mengungkapkan informasi identitas pribadi yang dikumpulkan dari pengguna situs web FinBoost yang berlokasi di www.finboost.com (Situs) termasuk Aplikasi Seluler FinBoost yang terdaftar di App Store dan Google Play Store, atau dikumpulkan melalui layanan jejaring sosial kami (bersama dengan Situs, Layanan)."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topAppBarLayout" />
+
+    <com.codesgood.views.JustifiedTextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/opensans_reg"
+        android:lineSpacingExtra="7dp"
+        android:lineSpacingMultiplier="0.8"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/textView1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Dengan mengakses dan/atau menggunakan layanan FinBoost, Pengguna menyatakan bahwa setiap data Pengguna adalah sah, dan Pengguna menyetujui FinBoost untuk memperoleh, mengumpulkan, menyimpan, mengelola dan menggunakan data tersebut sebagaimana tercantum dalam Kebijakan Privasi dan Syarat dan Ketentuan FinBoost."
+        />
+
+    <com.codesgood.views.JustifiedTextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:lineSpacingExtra="7dp"
+        android:fontFamily="@font/opensans_reg"
+        android:lineSpacingMultiplier="0.8"
+        app:layout_constraintTop_toBottomOf="@id/textView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="FinBoost dari waktu ke waktu berhak memperbaharui Kebijakan Privasi ini agar tetap relevan dan terkini dengan perubahan teknologi, hukum yang berlaku, inovasi FinBoost yang terus berkembang dan kebutuhan Pengguna, dan sebaiknya Anda memeriksa halaman ini secara berkala untuk memastikan Anda sudah mengetahui perubahan apa pun. FinBoost melindungi seluruh informasi yang diberikan Pengguna pada saat Pengguna menggunakan seluruh Layanan."
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

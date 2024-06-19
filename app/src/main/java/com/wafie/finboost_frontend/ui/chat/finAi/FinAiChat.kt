@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.database.FirebaseDatabase
 import com.wafie.finboost_frontend.data.preferences.UserPreference
 import com.wafie.finboost_frontend.data.preferences.dataStore
 import com.wafie.finboost_frontend.databinding.ActivityFinAiChatBinding
@@ -21,6 +22,7 @@ class FinAiChat : AppCompatActivity() {
     }
     private lateinit var chatAdapter: FinAiAdapter
     private lateinit var aiSuggestedQuetionAdapter: FinAiQuestionAdapter
+    private lateinit var db: FirebaseDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,19 +51,8 @@ class FinAiChat : AppCompatActivity() {
             adapter = aiSuggestedQuetionAdapter
         }
 
-        binding.btnSend.setOnClickListener {
-            val message = binding.edtChatAi.text.toString().trim()
-            if (message.isNotBlank()) {
-                viewModel.sendQuestion(message)
 
-                val currentList = chatAdapter.currentList.toMutableList()
-                currentList.add(ChatItem.UserQuestion(message))
-                currentList.add(ChatItem.Shimmer) // Tambahkan item shimmer
-                chatAdapter.submitList(currentList)
-
-                binding.edtChatAi.text!!.clear()
-            }
-        }
+        sendChat()
 
         viewModel.aiAnswer.observe(this, Observer { aiAnswer ->
             val currentList = chatAdapter.currentList.filterNot { it is ChatItem.Shimmer }.toMutableList()
@@ -75,10 +66,26 @@ class FinAiChat : AppCompatActivity() {
 
         viewModel.aiSuggestion(5, "-")
 
-        viewModel.error.observe(this, Observer { error ->
-            // Handle error
-        })
 
+        onBackPress()
+    }
+
+    private fun sendChat() {
+        binding.btnSend.setOnClickListener {
+            val message = binding.edtChatAi.text.toString().trim()
+            if (message.isNotBlank()) {
+                viewModel.sendQuestion(message)
+
+                val currentList = chatAdapter.currentList.toMutableList()
+                currentList.add(ChatItem.UserQuestion(message))
+                currentList.add(ChatItem.Shimmer)
+                chatAdapter.submitList(currentList)
+
+                binding.edtChatAi.text!!.clear()
+            }
+        }
+    }
+    private fun onBackPress() {
         setSupportActionBar(binding.topAppBar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
@@ -87,7 +94,9 @@ class FinAiChat : AppCompatActivity() {
         }
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
+    companion object {
+        private const val MESSAGES = "Chat With Fin Ai"
+        private const val CHAT_ROOM_ID = "CHAT_ROOM_ID"
     }
+
 }

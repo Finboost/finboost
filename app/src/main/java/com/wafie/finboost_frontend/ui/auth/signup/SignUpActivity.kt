@@ -13,7 +13,6 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
-import com.wafie.finboost_frontend.MainActivity
 import com.wafie.finboost_frontend.R
 import com.wafie.finboost_frontend.databinding.ActivitySignUpBinding
 import com.wafie.finboost_frontend.databinding.CustomErrorDialogBinding
@@ -38,15 +37,11 @@ class SignUpActivity : AppCompatActivity() {
         val genderAdapter = ArrayAdapter(this, R.layout.custom_dropdown_item, genders)
         binding.genderAutocomplete.setAdapter(genderAdapter)
 
-        roleViewModel.roles.observe(this, Observer { roles ->
-            val roleNames = roles.map { it.name ?: "Unknown" }
-            val roleId = roles.map { it.id?: "" }
-            val adapter = ArrayAdapter(this, R.layout.custom_dropdown_item, roleNames)
-            binding.roleAutocomplete.setAdapter(adapter)
-            binding.roleAutocomplete.setOnItemClickListener { _, _, position, id ->
-                selectedRoleId = roleId[position]
-            }
-        })
+        fetchAllRoles()
+
+        binding.tvSignIn.setOnClickListener {
+            startActivity(Intent(this, SignInActivity::class.java))
+        }
 
         signUpViewModel.isLoading.observe(this, Observer {
             showLoading(it)
@@ -84,7 +79,7 @@ class SignUpActivity : AppCompatActivity() {
                 signUpViewModel.signUpResult.observe(this, Observer { signUpResponse ->
                     signUpResponse?.let {
                         if (it.status == "success") {
-                            showSuccessDialog("Sign-Up Berhasil", "Selamat ${it.fullName}! akun anda berhasil dibuat")
+                            showSuccessDialog("Sign-Up Berhasil", "Selamat! akun anda berhasil dibuat")
                             clearEditText()
                         } else if(it.status == "fail") {
                             showErrorDialog("Oops! Sign-up gagal", "Sayang sekali, akun dengan email ${it.email} sudah ada")
@@ -107,6 +102,18 @@ class SignUpActivity : AppCompatActivity() {
         binding.edtFullName.setText("")
         binding.edtPhone.setText("")
         binding.roleAutocomplete.setText("")
+    }
+
+    private fun fetchAllRoles() {
+        roleViewModel.roles.observe(this, Observer { roles ->
+            val roleNames = roles.map { it.name ?: "Unknown" }
+            val roleId = roles.map { it.id?: "" }
+            val adapter = ArrayAdapter(this, R.layout.custom_dropdown_item, roleNames)
+            binding.roleAutocomplete.setAdapter(adapter)
+            binding.roleAutocomplete.setOnItemClickListener { _, _, position, id ->
+                selectedRoleId = roleId[position]
+            }
+        })
     }
 
     private fun showSuccessDialog(title: String, message: String) {

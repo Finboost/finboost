@@ -37,6 +37,12 @@ class ChatRoom : AppCompatActivity() {
         setupRecyclerView()
         setupFirebaseDatabase()
         sendChat()
+
+        val expertName = intent.getStringExtra("EXPERT_NAME")
+
+        binding.topAppBar.title = "$expertName"
+
+        onBackPress()
     }
 
     private fun setupRecyclerView() {
@@ -101,6 +107,15 @@ class ChatRoom : AppCompatActivity() {
         return decodedJwt?.getString("id") ?: ""
     }
 
+    private fun onBackPress() {
+        setSupportActionBar(binding.topAppBar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+
+        binding.topAppBar.setNavigationOnClickListener {
+            onBackPressed()
+        }
+    }
     companion object {
         private const val MESSAGES = "Chat With Expert"
         private const val CHAT_ROOM_ID = "CHAT_ROOM_ID"

@@ -45,6 +45,7 @@ class ExpertListAdapter(private val userId: String): ListAdapter<UsersItem, Expe
             val chatRoomId = generateChatRoomId(userId, "${expert.id}")
             val intent = Intent(holder.itemView.context, ChatRoom::class.java)
             intent.putExtra("CHAT_ROOM_ID", chatRoomId)
+            intent.putExtra("EXPERT_NAME", expert.fullName)
             holder.itemView.context.startActivity(intent)
         }
     }

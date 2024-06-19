@@ -44,10 +44,10 @@ class PersonalDataActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
+
         binding.topAppBar.setNavigationOnClickListener {
             onBackPressed()
         }
-        onBackPress()
     }
 
     private fun getUserProfile() {
@@ -74,10 +74,10 @@ class PersonalDataActivity : AppCompatActivity() {
             })
         }
     }
-    private fun onBackPress() {
+    override fun onBackPressed() {
+        super.onBackPressed()
         setSupportActionBar(binding.topAppBar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-
     }
 }

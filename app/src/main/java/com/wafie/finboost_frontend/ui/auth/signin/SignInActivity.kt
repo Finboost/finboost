@@ -17,6 +17,7 @@ import com.wafie.finboost_frontend.databinding.CustomErrorDialogBinding
 import com.wafie.finboost_frontend.databinding.CustomSuccessDialogBinding
 import com.wafie.finboost_frontend.ui.auth.signin.viewmodel.SignInViewModel
 import com.wafie.finboost_frontend.ui.auth.signin.viewmodel.SignInViewModelFactory
+import com.wafie.finboost_frontend.ui.auth.signup.SignUpActivity
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignInBinding
@@ -32,6 +33,10 @@ class SignInActivity : AppCompatActivity() {
 
         signInViewModel.isLoading.observe(this) {
             showLoading(it)
+        }
+
+        binding.tvSignUp.setOnClickListener {
+            startActivity(Intent(this, SignUpActivity::class.java))
         }
 
     }
@@ -51,7 +56,7 @@ class SignInActivity : AppCompatActivity() {
         signInViewModel.signInResult.observe(this) { response ->
             response?.let {
                 if (it.status == "success") {
-                    showSuccessDialog("Yeay! Anda berhasil login", "${it.message}")
+                    showSuccessDialog("Sign In Berhasil!", "Selamat! Anda berhasil masuk")
 
                     binding.progressBar.visibility = View.GONE
                 } else {
@@ -96,8 +101,6 @@ class SignInActivity : AppCompatActivity() {
         dialogBinding.tvDialogMessage.text = message
 
         dialogBinding.btnOk.setOnClickListener {
-            val intent = Intent(this, SignInActivity::class.java)
-            startActivity(intent)
             finish()
             dialog.dismiss()
         }
@@ -115,7 +118,7 @@ class SignInActivity : AppCompatActivity() {
         binding.progressBar.visibility = if (isLoading) View.GONE else View.VISIBLE
         binding.btnSignInGoogle.visibility = if (isLoading) View.VISIBLE else  View.GONE
         binding.btnSignIn.visibility = if (isLoading) View.VISIBLE else  View.GONE
-        binding.tvNoAccount.visibility = if (isLoading) View.VISIBLE else  View.GONE
+        binding.tvSignUp.visibility = if (isLoading) View.VISIBLE else  View.GONE
         binding.tvOr.visibility = if (isLoading) View.VISIBLE else  View.GONE
     }
 

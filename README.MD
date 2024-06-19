@@ -16,7 +16,7 @@
 - [Glide](https://github.com/bumptech/glide)(`Image Loading Framework`): To load image from network
 - [Dots Indicator](https://github.com/tommybuonomo/dotsindicator) (`Indicator`): To tell the user where are they on
 - [Flexbox Layoyt](https://github.com/google/flexbox-layout)(`Layouting`): To adjust complex layout
-- [Shimmer](https://github.com/facebookarchive/shimmer-android)(`UI Library): For making shimmer effect while loading the content
+- [Shimmer](https://github.com/facebookarchive/shimmer-android)(`UI Library`): For making shimmer effect while loading the content
 
 ## Architecture File and Folder
 | File/Folder Name    | Description                                                                                                                                                                                      |

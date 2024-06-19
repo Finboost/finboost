@@ -42,5 +42,7 @@
 ![User Mobile App Flow](https://github.com/Finboost/finboost/blob/main/userflow.png)
 
 ## App Overview
+### Onboarding Screen
 ![Onboard Screen](https://github.com/Finboost/finboost/blob/main/onboard.png)
+### Mobile app MVP
 ![MVP](https://github.com/Finboost/finboost/blob/main/mvp.png)

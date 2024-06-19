@@ -36,3 +36,11 @@
 | `app/res/layout`           | Folder that contain that UI layout for the appplication                                                                                                               |
 | `Graddle Scripts/build.gradle.kts`           | This file is used for management the whole library                                                                                                               |
 
+
+## User Flow Diagrams
+
+![User Mobile App Flow](https://github.com/Finboost/finboost/blob/main/userflow.png)
+
+## App Overview
+![Onboard Screen](https://github.com/Finboost/finboost/blob/main/onboard.png)
+![MVP](https://github.com/Finboost/finboost/blob/main/mvp.png)

@@ -12,7 +12,7 @@
 - [Room DB](https://developer.android.com/training/data-storage/room) (`Local Storage`): To test and save the dummy data while waiting the API.
 - [MDC](https://m3.material.io/develop/android/mdc-android) (`UI Framework`): Also like Jetpack Compose, MDC will give more option while developing the UI
 - [Retrofit](https://square.github.io/retrofit/)(`API Library`): Retrofit are android library to make easier when interacting with API
-- [GSON Converter] (https://github.com/square/retrofit/tree/trunk/retrofit-converters/gson) (`API Library`): For converting response API
+- [GSON Converter](https://github.com/square/retrofit/tree/trunk/retrofit-converters/gson) (`API Library`): For converting response API
 - [Glide](https://github.com/bumptech/glide)(`Image Loading Framework`): To load image from network
 - [Dots Indicator](https://github.com/tommybuonomo/dotsindicator) (`Indicator`): To tell the user where are they on
 - [Flexbox Layoyt](https://github.com/google/flexbox-layout)(`Layouting`): To adjust complex layout

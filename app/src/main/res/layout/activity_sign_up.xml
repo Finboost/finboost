@@ -136,8 +136,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             app:hintEnabled="false"
-            app:endIconDrawable="@drawable/ic_calender"
-            app:endIconMode="custom">
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtAge"

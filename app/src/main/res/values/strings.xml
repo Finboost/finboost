@@ -13,7 +13,7 @@
     <string name="sign_up_title">Buat akun \nmu terlebih dahulu yaa</string>
     <string name="sign_in_title">Selamat Datang \nKembali di Finboost</string>
     <string name="email">Email</string>
-    <string name="passowrd">Passowrd</string>
+    <string name="passowrd">Password</string>
     <string name="gender">Pilih Gender</string>
     <string name="role">Pilih Role</string>
     <string name="tanggal_lahir">Tanggal Lahir</string>
@@ -97,4 +97,5 @@
     <string name="has_account">Sudah punya akun?</string>
     <string name="privacy">Kebijakan Privasi ini mengatur cara FinBoost mengumpulkan, menggunakan, memelihara, dan mengungkapkan informasi identitas pribadi yang dikumpulkan dari pengguna situs web FinBoost yang berlokasi di www.finboost.com (Situs) termasuk Aplikasi Seluler FinBoost yang terdaftar di App Store dan Google Play Store, atau dikumpulkan melalui layanan jejaring sosial kami (bersama dengan Situs, Layanan). Dengan mengakses dan/atau menggunakan layanan FinBoost, Pengguna menyatakan bahwa setiap data Pengguna adalah sah, dan Pengguna menyetujui FinBoost untuk memperoleh, mengumpulkan, menyimpan, mengelola dan menggunakan data tersebut sebagaimana tercantum dalam Kebijakan Privasi dan Syarat dan Ketentuan FinBoost.FinBoost dari waktu ke waktu berhak memperbaharui Kebijakan Privasi ini agar tetap relevan dan terkini dengan perubahan teknologi, hukum yang berlaku, inovasi FinBoost yang terus berkembang dan kebutuhan Pengguna, dan sebaiknya Anda memeriksa halaman ini secara berkala untuk memastikan Anda sudah mengetahui perubahan apa pun.
         FinBoost melindungi seluruh informasi yang diberikan Pengguna pada saat Pengguna menggunakan seluruh Layanan.</string>
+    <string name="finboost">FinBoost</string>
 </resources>

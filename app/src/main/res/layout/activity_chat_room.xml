@@ -63,6 +63,7 @@
                     android:id="@+id/edtExpertChat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/opensans_sb"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_centerVertical="true"
@@ -70,7 +71,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="40dp"
                     android:layout_toStartOf="@id/btnSend"
-                    android:background="@drawable/button_transparent"
+                    android:background="@drawable/text_bg_transparent"
                     android:hint="type a message..."
                     android:inputType="text" />
 

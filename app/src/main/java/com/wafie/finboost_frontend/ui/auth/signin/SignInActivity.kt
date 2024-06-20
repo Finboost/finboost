@@ -39,6 +39,10 @@ class SignInActivity : AppCompatActivity() {
             startActivity(Intent(this, SignUpActivity::class.java))
         }
 
+        binding.btnSignInGoogle.setOnClickListener {
+            showToast("Oops! Sorry, this feature under the maintenance")
+        }
+
     }
 
     private fun signIn() {
@@ -49,7 +53,7 @@ class SignInActivity : AppCompatActivity() {
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 signInViewModel.signIn(email, password)
             } else {
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+                showToast("Please fill all the fields")
             }
 
         }
@@ -61,7 +65,6 @@ class SignInActivity : AppCompatActivity() {
                     binding.progressBar.visibility = View.GONE
                 } else {
                     showErrorDialog("Oops! Error", "Email atau password Anda salah, silahkan periksa kembali")
-                    Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -114,11 +117,16 @@ class SignInActivity : AppCompatActivity() {
         dialog.show()
     }
 
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
     private fun showLoading(isLoading: Boolean) {
         binding.progressBar.visibility = if (isLoading) View.GONE else View.VISIBLE
         binding.btnSignInGoogle.visibility = if (isLoading) View.VISIBLE else  View.GONE
         binding.btnSignIn.visibility = if (isLoading) View.VISIBLE else  View.GONE
         binding.tvSignUp.visibility = if (isLoading) View.VISIBLE else  View.GONE
+        binding.tvNoAccount.visibility = if (isLoading) View.VISIBLE else  View.GONE
         binding.tvOr.visibility = if (isLoading) View.VISIBLE else  View.GONE
     }
 

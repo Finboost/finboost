@@ -23,6 +23,7 @@ import com.wafie.finboost_frontend.data.preferences.UserPreference
 import com.wafie.finboost_frontend.data.preferences.dataStore
 import com.wafie.finboost_frontend.databinding.FragmentProfileBinding
 import com.wafie.finboost_frontend.ui.WelcomeActivity
+import com.wafie.finboost_frontend.ui.auth.signin.SignInActivity
 import com.wafie.finboost_frontend.ui.profile.personalData.PersonalDataActivity
 import com.wafie.finboost_frontend.ui.profile.personalData.viewmodel.PersonalDataViewModel
 import com.wafie.finboost_frontend.ui.profile.personalData.viewmodel.PersonalDataViewModelFactory
@@ -172,7 +173,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun navigateToWelcome() {
-        val intent = Intent(requireContext(), WelcomeActivity::class.java)
+        val intent = Intent(requireContext(), SignInActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
     }

@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Finboostfrontend" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/seccondary</item>
-        <item name="colorSecondary">@color/seccondary</item>
+<!--        <item name="colorPrimary">@color/seccondary</item>-->
+<!--        <item name="colorSecondary">@color/seccondary</item>-->
     </style>
 </resources>
